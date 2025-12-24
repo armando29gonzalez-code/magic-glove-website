@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+
 
 const LOGO_SRC = "/magic-glove-logo.jpg"; // put your logo in /public with this name
 
