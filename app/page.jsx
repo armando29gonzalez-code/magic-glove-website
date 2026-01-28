@@ -26,14 +26,20 @@ function formatPhoneForTel(phoneRaw) {
 }
 
 function useHashRoute() {
-  const getHash = () => (window.location.hash || "#/").replace("#", "");
-  const [route, setRoute] = useState(getHash());
+  const [route, setRoute] = useState("/");
+
   useEffect(() => {
-    const onHash = () => setRoute(getHash());
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    const getHash = () => (window.location.hash || "#/").replace("#", "");
+
+    const apply = () => setRoute(getHash());
+    apply();
+
+    window.addEventListener("hashchange", apply);
+    return () => window.removeEventListener("hashchange", apply);
   }, []);
+
   return route;
+
 }
 
 const cx = (...c) => c.filter(Boolean).join(" ");
