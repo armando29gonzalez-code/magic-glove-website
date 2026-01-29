@@ -29,16 +29,29 @@ function useHashRoute() {
   const [route, setRoute] = useState("/");
 
   useEffect(() => {
-    const getHash = () => (window.location.hash || "#/").replace("#", "");
+    const normalize = (raw) => {
+      // raw might be "#/work/solar" or "/work/solar" or "work/solar"
+      let r = (raw || "").replace(/^#/, ""); // remove leading #
+      if (!r) r = "/";
 
-    const apply = () => setRoute(getHash());
+      // ensure it starts with exactly ONE leading slash
+      r = "/" + r.replace(/^\/+/, "");
+
+      return r;
+    };
+
+    const apply = () => {
+      const raw = window.location.hash || "#/";
+      setRoute(normalize(raw));
+    };
+
     apply();
-
     window.addEventListener("hashchange", apply);
     return () => window.removeEventListener("hashchange", apply);
   }, []);
 
   return route;
+}
 
 }
 
