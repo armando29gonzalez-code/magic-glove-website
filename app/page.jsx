@@ -492,17 +492,18 @@ function HomePage({ business, servicedZips }) {
             title="Specialty Cleaning"
             subtitle="Hard water, stains, paint, and detailed sills/tracks — premium options where it matters."
           />
-          <div className="grid2">
-            {specialty.map((s, i) => (
-              <BeforeAfterSlider
-                key={i}
-                title={s.title}
-                subtitle={s.subtitle}
-                beforeStyle={beforeGlass()}
-                afterStyle={afterGlass()}
-              />
-            ))}
-          </div>
+         <div className="grid2">
+  {specialty.map((s, i) => (
+    <BeforeAfterSlider
+      key={i}
+      title={s.title}
+      subtitle={s.subtitle}
+      beforeStyle={i === 0 ? photoBg("/photos/buildupbefore1.jpeg") : beforeGlass()}
+      afterStyle={i === 0 ? photoBg("/photos/buildupafter2.jpeg") : afterGlass()}
+    />
+  ))}
+</div>
+
         </div>
       </section>
 
