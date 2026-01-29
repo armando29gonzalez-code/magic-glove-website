@@ -53,7 +53,6 @@ function useHashRoute() {
   return route;
 }
 
-}
 
 const cx = (...c) => c.filter(Boolean).join(" ");
 
