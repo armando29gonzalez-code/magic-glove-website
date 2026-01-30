@@ -233,12 +233,13 @@ function ZipChecker({ servicedZips }) {
 /** Placeholder image styles (swap later with real photos) */
 function photoBg(src) {
   return {
-    backgroundImage: `url(${src})`,
+    backgroundImage: 'url("' + src + '")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
   };
 }
+
 
 function beforeGlass() {
   return {
