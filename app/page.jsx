@@ -498,8 +498,8 @@ function HomePage({ business, servicedZips }) {
       key={i}
       title={s.title}
       subtitle={s.subtitle}
-      beforeStyle={i === 1 ? photoBg("/photos/hardwaterbefore1.jpeg") : beforeGlass()}
-      afterStyle={i === 1 ? photoBg("/photos/hardwaterafter2.jpeg") : afterGlass()}
+      beforeStyle={i === 1 ? photoBg("/photos/hardwater-before1.jpeg") : beforeGlass()}
+      afterStyle={i === 1 ? photoBg("/photos/hardwater-after1.jpeg") : afterGlass()}
     />
   ))}
 </div>
