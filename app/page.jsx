@@ -512,7 +512,7 @@ function HomePage({ business, servicedZips }) {
         i === 0 ? photoBg("/photos/hardwater-after1.jpeg")
         : i === 1 ? photoBg("/photos/buildup-after1.jpeg")
         : i === 2 ? photoBg("/photos/paint-after1.jpeg")
-        : i === 3 ? photoBg("/photos/sills-after1.jpeg")
+        : i === 3 ? photoBg("/photos/sills-after1.jpeg.jpeg")
         : afterGlass()
       }
     />
