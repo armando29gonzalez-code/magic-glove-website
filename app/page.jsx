@@ -232,14 +232,14 @@ function ZipChecker({ servicedZips }) {
 
 /** Placeholder image styles (swap later with real photos) */
 function photoBg(src) {
-  const safe = src.startsWith("/") ? src : `/${src}`;
   return {
-    backgroundImage: `url("${encodeURI(safe)}")`,
+    backgroundImage: `url("${src}")`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
   };
 }
+
 
 
 
