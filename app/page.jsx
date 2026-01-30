@@ -497,14 +497,22 @@ function HomePage({ business, servicedZips }) {
           />
          <div className="grid2">
   {specialty.map((s, i) => (
-    <BeforeAfterSlider
-      key={i}
-      title={s.title}
-      subtitle={s.subtitle}
-      beforeStyle={i === 0 ? photoBg("/photos/hardwater-before1.jpeg") : beforeGlass()}
-      afterStyle={i === 0 ? photoBg("/photos/hardwater-after1.jpeg") : afterGlass()}
-    />
-  ))}
+  <BeforeAfterSlider
+    key={i}
+    title={s.title}
+    subtitle={s.subtitle}
+    beforeStyle={
+      i === 0 ? photoBg("/photos/hardwater-before1.jpeg")
+      : i === 2 ? photoBg("/photos/paint-before1.jpeg")
+      : beforeGlass()
+    }
+    afterStyle={
+      i === 0 ? photoBg("/photos/hardwater-after1.jpeg")
+      : i === 2 ? photoBg("/photos/paint-after1.jpeg")
+      : afterGlass()
+    }
+  />
+))}
 </div>
 
         </div>
