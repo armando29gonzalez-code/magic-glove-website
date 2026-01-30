@@ -495,7 +495,7 @@ function HomePage({ business, servicedZips }) {
             title="Specialty Cleaning"
             subtitle="Hard water, stains, paint, and detailed sills/tracks — premium options where it matters."
           />
-        <div className="grid2">
+       <div className="grid2">
   {specialty.map((s, i) => (
     <BeforeAfterSlider
       key={i}
@@ -505,17 +505,20 @@ function HomePage({ business, servicedZips }) {
         i === 0 ? photoBg("/photos/hardwater-before1.jpeg")
         : i === 1 ? photoBg("/photos/buildup-before1.jpeg")
         : i === 2 ? photoBg("/photos/paint-before1.jpeg")
+        : i === 3 ? photoBg("/photos/sills-before1.jpeg")
         : beforeGlass()
       }
       afterStyle={
         i === 0 ? photoBg("/photos/hardwater-after1.jpeg")
         : i === 1 ? photoBg("/photos/buildup-after1.jpeg")
         : i === 2 ? photoBg("/photos/paint-after1.jpeg")
+        : i === 3 ? photoBg("/photos/sills-after1.jpeg")
         : afterGlass()
       }
     />
   ))}
 </div>
+
 
 
         </div>
