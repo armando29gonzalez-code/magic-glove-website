@@ -358,12 +358,33 @@ function AppShell({ business, children }) {
 }
 
 function HomePage({ business, servicedZips }) {
-  const specialty = useMemo(() => ([
-    { title: "Hard Water Removal (Options)", subtitle: "Mineral spotting + haze (case-by-case)." },
-    { title: "Stains & Buildup", subtitle: "Bug buildup, grime, and stubborn residue." },
-    { title: "Paint on Windows", subtitle: "Careful options to improve paint marks." },
-    { title: "Sills & Tracks", subtitle: "The finishing details that feel premium." },
-  ]), []);
+ const specialty = useMemo(() => ([
+  {
+    title: "Hard Water Removal (Options)",
+    subtitle: "Mineral spotting + haze (case-by-case).",
+    before: "/photos/hardwater-before1.jpeg",
+    after: "/photos/hardwater-after1.jpeg",
+  },
+  {
+    title: "Stains & Buildup",
+    subtitle: "Bug buildup, grime, and stubborn residue.",
+    before: "/photos/buildup-before1.jpeg",
+    after: "/photos/buildup-after1.jpeg",
+  },
+  {
+    title: "Paint on Windows",
+    subtitle: "Careful options to improve paint marks.",
+    before: "/photos/paint-before1.jpeg",
+    after: "/photos/paint-after1.jpeg",
+  },
+  {
+    title: "Sills & Tracks",
+    subtitle: "The finishing details that feel premium.",
+    before: "/photos/sills-before1.jpeg",
+    after: "/photos/sills-after1.jpeg",
+  },
+]), []);
+
 
   const services = useMemo(() => ([
     {
@@ -501,23 +522,12 @@ function HomePage({ business, servicedZips }) {
       key={i}
       title={s.title}
       subtitle={s.subtitle}
-      beforeStyle={
-        i === 0 ? photoBg("/photos/hardwater-before1.jpeg")
-        : i === 1 ? photoBg("/photos/buildup-before1.jpeg")
-        : i === 2 ? photoBg("/photos/paint-before1.jpeg")
-        : i === 3 ? photoBg("/photos/sills-before1.jpeg")
-        : beforeGlass()
-      }
-      afterStyle={
-        i === 0 ? photoBg("/photos/hardwater-after1.jpeg")
-        : i === 1 ? photoBg("/photos/buildup-after1.jpeg")
-        : i === 2 ? photoBg("/photos/paint-after1.jpeg")
-        : i === 3 ? photoBg("/photos/sills-after1.jpeg")
-        : afterGlass()
-      }
+      beforeStyle={photoBg(s.before)}
+      afterStyle={photoBg(s.after)}
     />
   ))}
 </div>
+
 
 
 
