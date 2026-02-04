@@ -587,13 +587,13 @@ function HomePage({ business, servicedZips }) {
     Get Estimate
   </Button>
 
-  {s.title === "Solar Panel Cleaning" ? (
+  {s.key === "solar" ? (
     <Button variant="outline" href={`tel:${business.phoneTel}`}>
       Call and ask about our clean window and panel bundle!
     </Button>
   ) : (
     <Button variant="outline" href={s.href}>
-      See our work
+      See our work!
     </Button>
   )}
 </div>
@@ -718,34 +718,45 @@ function ServiceWorkPage({
         </div>
       </section>
 
-      {/* WORK SECTION (either sliders OR photo boxes) */}
-      {sliders.length ? (
-        <section className="section" id="work-sliders">
-          <div className="wrap">
-            <SectionHead title="Before & After" subtitle="Drag the glove to reveal the finish." />
-            <div className="grid2">
-              {sliders.map((s, idx) => (
-                <BeforeAfterSlider
-                  key={idx}
-                  title={s.title}
-                  subtitle={s.subtitle}
-                  beforeStyle={photoBg(s.before)}
-                  afterStyle={photoBg(s.after)}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+     {/* WORK SECTION (either sliders OR photo boxes) */}
+{sliders?.length ? (
+  <section className="section" id="work-sliders">
+    <div className="wrap">
+      <SectionHead
+        title="Before & After"
+        subtitle="Drag the glove to reveal the finish."
+      />
+      <div className="grid2">
+        {sliders.map((s, idx) => (
+          <BeforeAfterSlider
+            key={idx}
+            title={s.title}
+            subtitle={s.subtitle}
+            beforeStyle={photoBg(s.before)}
+            afterStyle={photoBg(s.after)}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+) : (
+  <section className="section" id="work-photos">
+    <div className="wrap">
+      <SectionHead
+        title="See our work"
+        subtitle="A couple recent shots from real jobs."
+      />
+      {photos?.length ? (
+        <PhotoBoxes items={photos} />
       ) : (
-        <section className="section" id="work-photos">
-          <div className="wrap">
-            <SectionHead title="See our work" subtitle="A couple recent shots from real jobs." />
-            {photos.length ? <PhotoBoxes items={photos} /> : null}
-          </div>
-        </section>
+        <div className="tiny">Photos coming soon.</div>
       )}
+    </div>
+  </section>
+)}
 
-      {/* SEO / Info section */}
+
+            {/* SEO / Info section */}
       <section className="section">
         <div className="wrap">
           <Card>
@@ -758,40 +769,18 @@ function ServiceWorkPage({
                   <div className="seoP">{b.p}</div>
                 </div>
               ))}
-
-              <div className="seoCta">
-                <div className="seoCtaLine">
-                  Want a clean, premium finish with fair pricing and real care? Request a free quote anytime.
-                </div>
-                <div className="seoCtaBtns">
-                  <Button
-                    variant="primary"
-                    href="#/"
-                    onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
-                  >
-                    Get Free Estimate
-                  </Button>
-                  <Button variant="outline" href={`tel:${business.phoneTel}`}>
-                    Call {business.phoneDisplay}
-                  </Button>
-                </div>
-              </div>
             </div>
           </Card>
         </div>
       </section>
 
-      {/* Keep estimate at bottom too */}
       <section className="section alt" id="estimate">
         <div className="wrap">
-          <SectionHead
-            title="Get a Free Estimate"
-            subtitle="Same quick form — no scrolling back required."
-          />
+          <SectionHead title="Get a Free Estimate" subtitle="Same quick form — no scrolling back required." />
           <EstimateBlock business={business} />
         </div>
       </section>
-       </AppShell>
+    </AppShell>
   );
 }
 
