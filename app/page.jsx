@@ -402,12 +402,13 @@ function HomePage({ business, servicedZips }) {
       href: "#/work/storefront",
     },
     {
-      key: "solar",
-      title: "Solar Panel Cleaning",
-      desc: "Safe methods designed for panels.",
-      bullets: ["Soft brush + purified water", "Seasonal maintenance", "Before/after photos (optional)"],
-      href: "#/work/solar",
-    },
+  key: "solar",
+  title: "Solar Panel Cleaning",
+  desc: "Safe methods designed for panels.",
+  bullets: ["Soft brush + purified water", "Seasonal maintenance", "Before/after photos (optional)"],
+  href: `tel:${business.phoneTel}`,
+},
+
     {
       key: "tint",
       title: "Tint Removal",
@@ -551,7 +552,10 @@ function HomePage({ business, servicedZips }) {
               <div className="ctaRow">
                 <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>Get Estimate</Button>
                 <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
-                <Button variant="outline" href="#/work/windows">See more of our work!</Button>
+                <Button variant="outline" href={`tel:${business.phoneTel}`}>
+  Call and ask about our clean window and panel bundle!
+</Button>
+
               </div>
               <ZipChecker servicedZips={servicedZips} />
             </div>
@@ -575,7 +579,10 @@ function HomePage({ business, servicedZips }) {
 
                   <div className="cardBtns">
                     <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>Get Estimate</Button>
-                    <Button variant="outline" href={s.href}>See our work!</Button>
+                    <Button variant="outline" href={`tel:${business.phoneTel}`}>
+  Call and ask about our clean window and panel bundle!
+</Button>
+
                   </div>
                 </div>
               </Card>
@@ -1138,10 +1145,11 @@ export default function App() {
         business={business}
         title="Storefront Cleaning — See Our Work"
         subtitle="Reliable storefront maintenance plans that keep your business looking sharp week after week."
-        sliders={[
-          { title: "Entry glass & first impression", subtitle: "Customers notice clean glass immediately." },
-          { title: "Weekly route finish", subtitle: "Consistency is what makes it feel premium." },
-        ]}
+        photos={[
+  { title: "Storefront Clean #1", subtitle: "", src: "/photos/storefront-1.jpeg" },
+  { title: "Storefront Clean #2", subtitle: "", src: "/photos/storefront-2.jpeg" },
+]}
+
         seoTitle="Storefront Window Cleaning & Maintenance"
         seoBlocks={[
           {
@@ -1168,16 +1176,8 @@ export default function App() {
     );
   }
 
-  if (route === "/work/solar") {
-    return (
-      <ServiceWorkPage
-        business={business}
-        title="Solar Panel Cleaning — See Our Work"
-        subtitle="Safe cleaning methods designed for panels. A clean surface can help panels perform closer to their best."
-        sliders={[
-          { title: "Dust & buildup removal", subtitle: "A cleaner surface looks better and can help output." },
-          { title: "Premium finish check", subtitle: "We aim for a clean, consistent result." },
-        ]}
+  
+
         seoTitle="Solar Panel Cleaning Services"
         seoBlocks={[
           {
