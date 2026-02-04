@@ -640,12 +640,12 @@ function HomePage({ business, servicedZips }) {
         </div>
       </section>
 
-      {/* ESTIMATE */}
+            {/* ESTIMATE */}
       <section className="section" id="estimate">
         <div className="wrap">
           <SectionHead
             title="Get a Free Estimate"
-            subtitle="Request a quote and we’ll follow up shortly."
+            subtitle="Demo form for now — after approval we’ll connect it to SMS/email/CRM."
           />
           <EstimateBlock business={business} />
         </div>
@@ -653,6 +653,7 @@ function HomePage({ business, servicedZips }) {
     </AppShell>
   );
 }
+
 
 
 /** Simple photo boxes (no before/after slider) */
