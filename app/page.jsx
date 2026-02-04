@@ -537,50 +537,19 @@ function HomePage({ business, servicedZips }) {
         </div>
       </section>
 
-      {/* SERVICES + ZIP CHECK */}
-      <section className="section alt" id="services">
-        <div className="wrap">
-          <div className="servicesHeadRow">
-            <div className="servicesHeadLeft">
-              <SectionHead
-                title="Services"
-                subtitle="Choose what you need — confirm your zip — and request a free estimate."
-              />
-            </div>
+     {/* SERVICES + ZIP CHECK */}
+<section className="section alt" id="services">
+  <div className="wrap">
+    <div className="servicesHeadRow">
+      <div className="servicesHeadLeft">
+        <SectionHead
+          title="Services"
+          subtitle="Choose what you need — confirm your zip — and request a free estimate."
+        />
+      </div>
 
-            <div className="servicesHeadRight">
-           <div className="ctaRow">
-  <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>
-    Get Estimate
-  </Button>
-  <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
-</div>
-  
-
-              </div>
-              <ZipChecker servicedZips={servicedZips} />
-            </div>
-          </div>
-
-         <div className="grid2">
-  {services.map((s) => (
-    <Card key={s.key} className="serviceCard">
-      <div className="cardPad">
-        <div className="cardHeaderRow">
-          <div>
-            <h3 className="h3">{s.title}</h3>
-            <p className="mutedText">{s.desc}</p>
-          </div>
-          <div className="check">✓</div>
-        </div>
-
-        <ul className="bullets">
-          {s.bullets.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
-
-        <div className="cardBtns">
+      <div className="servicesHeadRight">
+        <div className="ctaRow">
           <Button
             variant="primary"
             href="#/"
@@ -589,21 +558,66 @@ function HomePage({ business, servicedZips }) {
             Get Estimate
           </Button>
 
-          {s.key === "solar" ? (
-            <Button variant="outline" href={`tel:${business.phoneTel}`}>
-              Call and ask about our clean window and panel bundle!
-            </Button>
-          ) : (
-            <Button variant="outline" href={s.href}>
-              See our work!
-            </Button>
-          )}
+          <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
         </div>
+
+        {/* ZIP CHECK BOX (this should be the small box on the right) */}
+        <Card className="zipCard">
+          <div className="cardPad">
+            <div className="zipTitle">Check your zip</div>
+            <div className="zipRow">
+              <input className="zipInput" placeholder="e.g., 91344" />
+              <div className="zipDash">—</div>
+              <input className="zipInput" placeholder="City / neighborhood" />
+            </div>
+          </div>
+        </Card>
       </div>
-    </Card>
-  ))}
-</div>
-      </section>
+    </div>
+
+    {/* service cards grid */}
+    <div className="grid2 servicesGrid">
+      {services.map((s) => (
+        <Card key={s.key} className="serviceCard">
+          <div className="cardPad">
+            <div className="cardHeaderRow">
+              <div>
+                <h3 className="h3">{s.title}</h3>
+                <p className="mutedText">{s.desc}</p>
+              </div>
+              <div className="check">✓</div>
+            </div>
+
+            <ul className="bullets">
+              {s.bullets.map((b) => <li key={b}>{b}</li>)}
+            </ul>
+
+            <div className="cardBtns">
+              <Button
+                variant="primary"
+                href="#/"
+                onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
+              >
+                Get Estimate
+              </Button>
+
+              {s.key === "solar" ? (
+                <Button variant="outline" href={`tel:${business.phoneTel}`}>
+                  Call and ask about our clean window and panel bundle!
+                </Button>
+              ) : (
+                <Button variant="outline" href={s.href}>
+                  See our work!
+                </Button>
+              )}
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* TESTIMONIALS */}
       <section className="section" id="testimonials">
@@ -1639,4 +1653,54 @@ a:hover{text-decoration:underline}
   .mobileCta{display:grid;grid-template-columns:1fr 1fr}
   .mobileSpacer{display:block}
 }
+/* ===== Services layout (match earlier centered look) ===== */
+
+.servicesHeadRow{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:26px;
+  flex-wrap:wrap;
+}
+
+.servicesHeadLeft{
+  flex:1;
+  min-width:320px;
+}
+
+.servicesHeadRight{
+  width:420px;
+  max-width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.zipCard{
+  width:100%;
+}
+
+/* Make the service cards smaller + centered (not full width) */
+.servicesGrid{
+  margin-top:18px;
+  max-width:980px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Optional: tighten spacing a bit */
+.servicesGrid.grid2{
+  gap:18px;
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 900px){
+  .servicesHeadRight{
+    width:100%;
+  }
+  .servicesGrid{
+    max-width:100%;
+  }
+}
+
 `;
