@@ -549,12 +549,13 @@ function HomePage({ business, servicedZips }) {
             </div>
 
             <div className="servicesHeadRight">
-              <div className="ctaRow">
-                <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>Get Estimate</Button>
-                <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
-                <Button variant="outline" href={`tel:${business.phoneTel}`}>
-  Call and ask about our clean window and panel bundle!
-</Button>
+           <div className="ctaRow">
+  <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>
+    Get Estimate
+  </Button>
+  <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
+</div>
+  
 
               </div>
               <ZipChecker servicedZips={servicedZips} />
@@ -577,19 +578,25 @@ function HomePage({ business, servicedZips }) {
                     {s.bullets.map((b) => <li key={b}>{b}</li>)}
                   </ul>
 
-                  <div className="cardBtns">
-                    <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>Get Estimate</Button>
-                    <Button variant="outline" href={`tel:${business.phoneTel}`}>
-  Call and ask about our clean window and panel bundle!
-</Button>
+<div className="cardBtns">
+  <Button
+    variant="primary"
+    href="#/"
+    onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
+  >
+    Get Estimate
+  </Button>
 
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+  {s.title === "Solar Panel Cleaning" ? (
+    <Button variant="outline" href={`tel:${business.phoneTel}`}>
+      Call and ask about our clean window and panel bundle!
+    </Button>
+  ) : (
+    <Button variant="outline" href={s.href}>
+      See our work
+    </Button>
+  )}
+</div>
 
       {/* TESTIMONIALS */}
       <section className="section" id="testimonials">
