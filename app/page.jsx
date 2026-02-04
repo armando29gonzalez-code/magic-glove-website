@@ -537,7 +537,7 @@ function HomePage({ business, servicedZips }) {
         </div>
       </section>
 
-     {/* SERVICES + ZIP CHECK */}
+    {/* SERVICES + ZIP CHECK */}
 <section className="section alt" id="services">
   <div className="wrap">
     <div className="servicesHeadRow">
@@ -557,15 +557,17 @@ function HomePage({ business, servicedZips }) {
           >
             Get Estimate
           </Button>
-          <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
+
+          <Button variant="outline" href={`tel:${business.phoneTel}`}>
+            Call
+          </Button>
         </div>
 
-        {/* This is the small box on the right */}
+        {/* This restores your original “We service this zip ✅” behavior */}
         <ZipChecker servicedZips={servicedZips} />
       </div>
     </div>
 
-    {/* service cards grid */}
     <div className="grid2 servicesGrid">
       {services.map((s) => (
         <Card key={s.key} className="serviceCard">
@@ -579,7 +581,9 @@ function HomePage({ business, servicedZips }) {
             </div>
 
             <ul className="bullets">
-              {s.bullets.map((b) => <li key={b}>{b}</li>)}
+              {s.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
             </ul>
 
             <div className="cardBtns">
@@ -607,7 +611,6 @@ function HomePage({ business, servicedZips }) {
     </div>
   </div>
 </section>
-
 
     {/* service cards grid */}
     <div className="grid2 servicesGrid">
