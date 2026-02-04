@@ -1176,33 +1176,6 @@ export default function App() {
     );
   }
 
-  
-
-        seoTitle="Solar Panel Cleaning Services"
-        seoBlocks={[
-          {
-            p:
-              "Solar panels collect dust, pollen, and debris that can reduce how clean they look—and potentially how efficiently they operate. Magic Glove uses careful methods designed for solar surfaces, with attention to safety and detail."
-          },
-          {
-            h: "Why solar cleaning matters",
-            p:
-              "Even a light film of dust can build up over time. Many homeowners choose seasonal cleanings—especially before high-sun months—to keep panels looking sharp and performing consistently."
-          },
-          {
-            h: "Our approach",
-            p:
-              "We use safe, low-abrasion methods and avoid anything that could damage the surface. We focus on a clean finish and clear communication—so you know exactly what’s happening on your roof."
-          },
-          {
-            h: "How often should panels be cleaned?",
-            p:
-              "Many homes benefit from 1–2 cleanings per year, depending on dust levels and surrounding conditions. We can recommend a schedule after your first cleaning."
-          },
-        ]}
-      />
-    );
-  }
 
   if (route === "/work/tint") {
     return (
