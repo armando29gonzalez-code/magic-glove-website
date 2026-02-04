@@ -563,7 +563,7 @@ function HomePage({ business, servicedZips }) {
           </Button>
         </div>
 
-        {/* This restores your original “We service this zip ✅” behavior */}
+        {/* Keep the working zip checker (the one that says “We service this zip ✅”) */}
         <ZipChecker servicedZips={servicedZips} />
       </div>
     </div>
@@ -611,50 +611,6 @@ function HomePage({ business, servicedZips }) {
     </div>
   </div>
 </section>
-
-    {/* service cards grid */}
-    <div className="grid2 servicesGrid">
-      {services.map((s) => (
-        <Card key={s.key} className="serviceCard">
-          <div className="cardPad">
-            <div className="cardHeaderRow">
-              <div>
-                <h3 className="h3">{s.title}</h3>
-                <p className="mutedText">{s.desc}</p>
-              </div>
-              <div className="check">✓</div>
-            </div>
-
-            <ul className="bullets">
-              {s.bullets.map((b) => <li key={b}>{b}</li>)}
-            </ul>
-
-            <div className="cardBtns">
-              <Button
-                variant="primary"
-                href="#/"
-                onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
-              >
-                Get Estimate
-              </Button>
-
-              {s.key === "solar" ? (
-                <Button variant="outline" href={`tel:${business.phoneTel}`}>
-                  Call and ask about our clean window and panel bundle!
-                </Button>
-              ) : (
-                <Button variant="outline" href={s.href}>
-                  See our work!
-                </Button>
-              )}
-            </div>
-          </div>
-        </Card>
-      ))}
-    </div>
-  </div>
-</section>
-
 
       {/* TESTIMONIALS */}
       <section className="section" id="testimonials">
