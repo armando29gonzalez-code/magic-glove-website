@@ -548,32 +548,21 @@ function HomePage({ business, servicedZips }) {
         />
       </div>
 
-      <div className="servicesHeadRight">
-        <div className="ctaRow">
-          <Button
-            variant="primary"
-            href="#/"
-            onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
-          >
-            Get Estimate
-          </Button>
+     <div className="servicesHeadRight">
+  <div className="ctaRow">
+    <Button
+      variant="primary"
+      href="#/"
+      onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
+    >
+      Get Estimate
+    </Button>
 
-          <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
-        </div>
+    <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
+  </div>
 
-        {/* ZIP CHECK BOX (this should be the small box on the right) */}
-        <Card className="zipCard">
-          <div className="cardPad">
-            <div className="zipTitle">Check your zip</div>
-            <div className="zipRow">
-              <input className="zipInput" placeholder="e.g., 91344" />
-              <div className="zipDash">—</div>
-              <input className="zipInput" placeholder="City / neighborhood" />
-            </div>
-          </div>
-        </Card>
-      </div>
-    </div>
+  <ZipChecker servicedZips={servicedZips} />
+</div>
 
     {/* service cards grid */}
     <div className="grid2 servicesGrid">
