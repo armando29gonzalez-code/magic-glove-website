@@ -663,15 +663,24 @@ function PhotoBoxes({ items }) {
 
 
 
-/** Service work page template (REMOVED: Recent cleans section) */
-function ServiceWorkPage({ business, title, subtitle, sliders = [], photos = [], seoTitle, seoBlocks }) {
+/** Service work page template */
+function ServiceWorkPage({
+  business,
+  title,
+  subtitle,
+  sliders = [],
+  photos = [],
+  seoTitle,
+  seoBlocks = [],
+}) {
   return (
     <AppShell business={business}>
       <section className="workHero">
         <div className="workHeroBg" />
         <div className="wrap workHeroInner">
           <div className="workCrumb">
-            <a href="#/">Home</a> <span className="crumbDot">•</span> <span>See our work</span>
+            <a href="#/">Home</a> <span className="crumbDot">•</span>{" "}
+            <span>See our work</span>
           </div>
 
           <h1 className="h1 workTitle">{title}</h1>
@@ -696,7 +705,7 @@ function ServiceWorkPage({ business, title, subtitle, sliders = [], photos = [],
       </section>
 
       {/* WORK SECTION (either sliders OR photo boxes) */}
-      {sliders?.length ? (
+      {sliders.length ? (
         <section className="section" id="work-sliders">
           <div className="wrap">
             <SectionHead title="Before & After" subtitle="Drag the glove to reveal the finish." />
@@ -717,7 +726,7 @@ function ServiceWorkPage({ business, title, subtitle, sliders = [], photos = [],
         <section className="section" id="work-photos">
           <div className="wrap">
             <SectionHead title="See our work" subtitle="A couple recent shots from real jobs." />
-            {photos?.length ? <PhotoBoxes items={photos} /> : null}
+            {photos.length ? <PhotoBoxes items={photos} /> : null}
           </div>
         </section>
       )}
@@ -761,51 +770,17 @@ function ServiceWorkPage({ business, title, subtitle, sliders = [], photos = [],
       {/* Keep estimate at bottom too */}
       <section className="section alt" id="estimate">
         <div className="wrap">
-          <SectionHead title="Get a Free Estimate" subtitle="Same quick form — no scrolling back required." />
+          <SectionHead
+            title="Get a Free Estimate"
+            subtitle="Same quick form — no scrolling back required."
+          />
           <EstimateBlock business={business} />
         </div>
       </section>
-    </AppShell>
+       </AppShell>
   );
 }
 
-
-      <section className="section">
-        <div className="wrap">
-          <Card>
-            <div className="cardPad seoPad">
-              <div className="seoTitle">{seoTitle}</div>
-              {seoBlocks.map((b, i) => (
-                <div key={i} className="seoBlock">
-                  {b.h ? <div className="seoH">{b.h}</div> : null}
-                  <div className="seoP">{b.p}</div>
-                </div>
-              ))}
-
-              <div className="seoCta">
-                <div className="seoCtaLine">
-                  Want a clean, premium finish with fair pricing and real care? Request a free quote anytime.
-                </div>
-                <div className="seoCtaBtns">
-                  <Button variant="primary" href="#/" onClick={() => setTimeout(() => scrollToId("estimate"), 0)}>Get Free Estimate</Button>
-                  <Button variant="outline" href={`tel:${business.phoneTel}`}>Call {business.phoneDisplay}</Button>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Keep estimate at bottom too */}
-      <section className="section alt" id="estimate">
-        <div className="wrap">
-          <SectionHead title="Get a Free Estimate" subtitle="Quick request — we’ll follow up shortly." />
-          <EstimateBlock business={business} />
-        </div>
-      </section>
-    </AppShell>
-  );
-}
 
 function CommunityPage({ business }) {
   return (
