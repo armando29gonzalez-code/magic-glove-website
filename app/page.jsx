@@ -641,18 +641,22 @@ function HomePage({ business, servicedZips }) {
       </section>
 
             {/* ESTIMATE */}
-      <section className="section" id="estimate">
-        <div className="wrap">
-          <SectionHead
-            title="Get a Free Estimate"
-            subtitle="Demo form for now — after approval we’ll connect it to SMS/email/CRM."
-          />
-          <EstimateBlock business={business} />
-        </div>
-      </section>
-    </AppShell>
-  );
+  <section className="section" id="estimate">
+    <div className="wrap">
+      <SectionHead
+        title="Get a Free Estimate"
+        subtitle="Demo form for now — after approval we’ll connect it to SMS/email/CRM."
+      />
+      <EstimateBlock business={business} />
+    </div>
+  </section>
+
+  </div> {/* <-- ADD THIS ONE LINE */}
+
+</AppShell>
+);
 }
+
 
 
 
