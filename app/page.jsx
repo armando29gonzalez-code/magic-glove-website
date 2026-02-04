@@ -548,21 +548,66 @@ function HomePage({ business, servicedZips }) {
         />
       </div>
 
-     <div className="servicesHeadRight">
-  <div className="ctaRow">
-    <Button
-      variant="primary"
-      href="#/"
-      onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
-    >
-      Get Estimate
-    </Button>
+      <div className="servicesHeadRight">
+        <div className="ctaRow">
+          <Button
+            variant="primary"
+            href="#/"
+            onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
+          >
+            Get Estimate
+          </Button>
+          <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
+        </div>
 
-    <Button variant="outline" href={`tel:${business.phoneTel}`}>Call</Button>
+        {/* This is the small box on the right */}
+        <ZipChecker servicedZips={servicedZips} />
+      </div>
+    </div>
+
+    {/* service cards grid */}
+    <div className="grid2 servicesGrid">
+      {services.map((s) => (
+        <Card key={s.key} className="serviceCard">
+          <div className="cardPad">
+            <div className="cardHeaderRow">
+              <div>
+                <h3 className="h3">{s.title}</h3>
+                <p className="mutedText">{s.desc}</p>
+              </div>
+              <div className="check">✓</div>
+            </div>
+
+            <ul className="bullets">
+              {s.bullets.map((b) => <li key={b}>{b}</li>)}
+            </ul>
+
+            <div className="cardBtns">
+              <Button
+                variant="primary"
+                href="#/"
+                onClick={() => setTimeout(() => scrollToId("estimate"), 0)}
+              >
+                Get Estimate
+              </Button>
+
+              {s.key === "solar" ? (
+                <Button variant="outline" href={`tel:${business.phoneTel}`}>
+                  Call and ask about our clean window and panel bundle!
+                </Button>
+              ) : (
+                <Button variant="outline" href={s.href}>
+                  See our work!
+                </Button>
+              )}
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
   </div>
+</section>
 
-  <ZipChecker servicedZips={servicedZips} />
-</div>
 
     {/* service cards grid */}
     <div className="grid2 servicesGrid">
