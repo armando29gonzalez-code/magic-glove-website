@@ -639,7 +639,7 @@ function HomePage({ business, servicedZips }) {
     </AppShell>
   );
 }
-...end of HomePage...
+
 
 /** Simple photo boxes (no before/after slider) */
 function PhotoBoxes({ items }) {
