@@ -734,32 +734,42 @@ function ServiceWorkPage({
         </div>
       </section>
 
-{/* WORK SECTION (either sliders OR photo boxes) */}
-{sliders?.length ? (
-  <section className="section" id="work-sliders">
-    <div className="wrap">
-      <SectionHead title="Before & After" subtitle="Drag the glove to reveal the finish." />
-      <div className="grid2">
-        {sliders.map((s, idx) => (
-          <BeforeAfterSlider
-            key={idx}
-            title={s.title}
-            subtitle={s.subtitle}
-            beforeStyle={photoBg(s.before)}
-            afterStyle={photoBg(s.after)}
-          />
-        ))}
-      </div>
+{/* WORK SECTION (sliders + photos together) */}
+<section className="section" id="work-media">
+  <div className="wrap">
+    <SectionHead
+      title="See our work"
+      subtitle="Before/after examples + real job photos."
+    />
+
+    <div className="grid2">
+      {sliders?.map((s, idx) => (
+        <BeforeAfterSlider
+          key={`s-${idx}`}
+          title={s.title}
+          subtitle={s.subtitle}
+          beforeStyle={photoBg(s.before)}
+          afterStyle={photoBg(s.after)}
+        />
+      ))}
+
+      {photos?.map((p, idx) => (
+        <Card key={`p-${idx}`} className="photoCard">
+          <div className="cardPad">
+            <div className="photoTop">
+              <div className="photoTitle">{p.title}</div>
+              {p.subtitle ? <div className="photoSub">{p.subtitle}</div> : null}
+            </div>
+            <div className="photoFrame">
+              <div className="photoImg" style={photoBg(p.src)} />
+            </div>
+          </div>
+        </Card>
+      ))}
     </div>
-  </section>
-) : (
-  <section className="section" id="work-photos">
-    <div className="wrap">
-      <SectionHead title="See our work" subtitle="A couple recent shots from real jobs." />
-      {photos?.length ? <PhotoBoxes items={photos} /> : <div className="tiny">Photos coming soon.</div>}
-    </div>
-  </section>
-)}
+  </div>
+</section>
+
 
 
             {/* SEO / Info section */}
@@ -1100,43 +1110,37 @@ export default function App() {
   }, [route]);
 
   // Service pages
-  if (route === "/work/windows") {
-    return (
-      <ServiceWorkPage
-        business={business}
-        title="Window Cleaning — See Our Work"
-        subtitle="Interior & exterior window cleaning with a premium finish, clear communication, and fair pricing across Los Angeles."
-        sliders={[
-  {
-    title: "Exterior glass clarity",
-    subtitle: "A clean view makes the whole home feel brighter.",
-    before: "/photos/placeholder-before.jpeg",
-after: "/photos/placeholder-after.jpeg",
+ if (route === "/work/windows") {
+  return (
+    <ServiceWorkPage
+      business={business}
+      title="Window Cleaning — See Our Work"
+      subtitle="Interior & exterior window cleaning with a premium finish, clear communication, and fair pricing across Los Angeles."
+      sliders={[
+        {
+          title: "Exterior glass clarity",
+          subtitle: "A clean view makes the whole home feel brighter.",
+          before: "/photos/windows-before1.jpeg",
+          after: "/photos/windows-after1.jpeg",
+        },
+      ]}
+      photos={[
+        {
+          title: "Window + screen scrub-down",
+          subtitle: "Thorough scrub-down with a 100% satisfaction guarantee.",
+          src: "/photos/residential-screens.jpeg",
+        },
+      ]}
+      seoTitle="Interior & Exterior Window Washing Services"
+seoBlocks={[]}
 
-  },
-]}
-photos={[
-  {
-    title: "Window & screen scrub-down",
-    subtitle: "Full scrub-down with a 100% satisfaction guarantee.",
-    src: "/photos/placeholder-single.jpeg",
+        
+      ]}
+    />
+  );
+}
 
-  },
-]}
-
-
-photos={[
-  {
-    title: "Window + screen scrub-down",
-    subtitle: "Thorough scrub-down with a 100% satisfaction guarantee.",
-    src: "/photos/residential-screens.jpeg",
-  },
-]}
-
-        seoTitle="Interior & Exterior Window Washing Services"
-        seoBlocks={[
-          {
-            p:
+            
               "At Magic Glove Window Cleaning, we provide exterior and interior window cleaning across Los Angeles & surrounding areas. Homeowners choose us because we treat every home with care, communicate clearly, and aim for a finish you can feel proud of."
           },
           {
