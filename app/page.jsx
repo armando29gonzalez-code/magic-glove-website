@@ -1728,5 +1728,60 @@ a:hover{text-decoration:underline}
     max-width:100%;
   }
 }
+/* ===== Before/After slider typography + layout (restored) ===== */
+.baCard{overflow:hidden}
+.baPad{padding:18px}
+.baTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+
+.baTitle{
+  font-weight:950;
+  color: rgba(15,47,69,.96);
+  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+.baSub{
+  margin-top:6px;
+  color: rgba(80,97,114,.92);
+  font-size:13px;
+  font-weight:800;
+}
+
+.baBadges{display:flex;gap:8px}
+.baBadge{
+  border:1px solid rgba(15,47,69,.14);
+  background: rgba(255,255,255,.92);
+  padding:6px 10px;border-radius:999px;
+  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
+}
+.baFrame{
+  position:relative;border-radius: var(--radius);
+  overflow:hidden;border:1px solid rgba(15,47,69,.12);
+  background: rgba(24,58,83,.04);
+}
+.baLayer{position:absolute;inset:0}
+.baCornerTag{
+  position:absolute;top:12px;left:12px;
+  border:1px solid rgba(15,47,69,.14);
+  background: rgba(255,255,255,.92);
+  padding:6px 10px;border-radius:999px;
+  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
+}
+.baDivider{
+  position:absolute;top:0;bottom:0;width:2px;
+  background: rgba(147,182,164,.95);
+  transform: translateX(-1px);
+  box-shadow: 0 0 0 3px rgba(147,182,164,.18);
+}
+.gloveHandle{
+  position:absolute;top:50%;left:50%;
+  transform: translate(-50%, -50%);
+  width:46px;height:46px;border-radius:999px;
+  display:grid;place-items:center;
+  background: rgba(255,255,255,.92);
+  border:1px solid rgba(15,47,69,.18);
+  box-shadow: var(--shadow2);
+  font-size:18px;
+}
+.baRange{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor: ew-resize}
+.baHint{margin-top:10px;color: rgba(80,97,114,.90);font-size:12.5px}
 
 `;
