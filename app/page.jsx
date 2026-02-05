@@ -79,7 +79,7 @@ function BeforeAfterSlider({
   afterLabel = "After",
   beforeStyle,
   afterStyle,
-  height = 260,
+  height = 340,
 }) {
   const [val, setVal] = useState(55);
 
@@ -1368,15 +1368,19 @@ a:hover{text-decoration:underline}
   margin:0;
   font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   font-size:48px;line-height:1.06;letter-spacing:-.03em;
+  font-weight: 950;
   color: rgba(15,47,69,.98);
 }
+
 .h2{
   margin:0;
   font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   font-size:34px;letter-spacing:-.03em;
+  font-weight: 950;
   color: rgba(15,47,69,.98);
 }
-.h3{margin:0;font-size:18px;letter-spacing:-.01em;color: rgba(15,47,69,.96)}
+
+.h3{margin:0;font-size:18px;letter-spacing:-.01em;color: rgba(15,47,69,.96);font-weight:950}
 .sub{margin-top:6px;color: rgba(80,97,114,.92);font-size:14.5px;max-width:86ch}
 .sectionHead{display:grid;gap:6px;margin-bottom:18px}
 .sectionHeadCenter{text-align:center;align-items:center}
@@ -1451,7 +1455,7 @@ a:hover{text-decoration:underline}
 .photoSub{margin-top:6px;color: rgba(80,97,114,.92);font-size:13px}
 .photoFrame{
   margin:12px 18px 18px;
-  height:260px;
+  height:340px;
   border-radius: var(--radius);
   overflow:hidden;
   border:1px solid rgba(15,47,69,.12);
