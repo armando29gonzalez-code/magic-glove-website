@@ -739,53 +739,29 @@ function ServiceWorkPage({
       <section className="section" id="work-media">
         <div className="wrap">
           {/* If BOTH exist: two-column layout (slider left, photo right) */}
-          {sliders?.length > 0 && photos?.length > 0 ? (
-           <div>
-  <SectionHead title="Before & After" />
-  <div className="grid1">
-    {sliders.map((s, idx) => (
-      <BeforeAfterSlider
-        key={`s-${idx}`}
-        title={s.title}
-        subtitle={s.subtitle}
-        beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
-        afterStyle={s.after ? photoBg(s.after) : afterGlass()}
-      />
-    ))}
+         {sliders?.length > 0 && photos?.length > 0 ? (
+  <div className="grid2">
+    <div>
+      <SectionHead title="Before & After" />
+      <div className="grid1">
+        {sliders.map((s, idx) => (
+          <BeforeAfterSlider
+            key={`s-${idx}`}
+            title={s.title}
+            subtitle={s.subtitle}
+            beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
+            afterStyle={s.after ? photoBg(s.after) : afterGlass()}
+          />
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <SectionHead title="See our work" />
+      <PhotoBoxes items={photos} />
+    </div>
   </div>
-</div>
-
-
-              <div>
-                <SectionHead title="See our work" />
-                <PhotoBoxes items={photos} />
-              </div>
-            </div>
-          ) : sliders?.length > 0 ? (
-            <>
-              <SectionHead title="Before & After" />
-              <div className="grid1">
-                {sliders.map((s, idx) => (
-                  <BeforeAfterSlider
-                    key={`s-${idx}`}
-                    title={s.title}
-                    subtitle={s.subtitle}
-                    beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
-                    afterStyle={s.after ? photoBg(s.after) : afterGlass()}
-                  />
-                ))}
-              </div>
-            </>
-          ) : photos?.length > 0 ? (
-            <>
-              <SectionHead title="See our work" />
-              <PhotoBoxes items={photos} />
-            </>
-          ) : null}
-        </div>
-      </section>
-
-
+) : sliders?.length > 0 ? (
 
             {/* SEO / Info section */}
       <section className="section">
