@@ -1851,6 +1851,14 @@ a:hover{text-decoration:underline}
   background-repeat: no-repeat !important;
 }
 
+/* Make the contain “letterbox” area look like a clean matte */
+#work-media .baFrame{
+  background: #fff !important;
+}
+
+#work-media .baLayer{
+  background-color: #fff !important;
+}
 
 
 #work-media .photoImg{
