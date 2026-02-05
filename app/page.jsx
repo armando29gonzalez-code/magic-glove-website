@@ -1837,9 +1837,9 @@ a:hover{text-decoration:underline}
 /* ===== Work page media: make images fill the frames (wider look) ===== */
 #work-media .baLayer{
   background-size: cover !important;
-  background-position: center !important;
   background-repeat: no-repeat !important;
 }
+
 
 #work-media .photoImg{
   width:100%;
