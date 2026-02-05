@@ -1120,15 +1120,15 @@ export default function App() {
         {
           title: "Exterior glass clarity",
           subtitle: "A clean view makes the whole home feel brighter.",
-          before: "/photos/placeholder-before.jpeg",
-          after: "/photos/placeholder-after.jpeg",
+          before: "/photos/exteriorglass-before1.jpeg",
+          after: "/photos/exteriorglass-after1.jpeg",
         },
       ]}
       photos={[
         {
           title: "Window & screen scrub-down",
           subtitle: "Full scrub + rinse with a 100% satisfaction guarantee.",
-          src: "/photos/placeholder-screens.jpeg",
+          src: "/photos/scrubdown.jpeg",
         },
       ]}
       seoTitle="Interior & Exterior Window Washing Services"
