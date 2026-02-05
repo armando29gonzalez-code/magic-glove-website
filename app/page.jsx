@@ -401,13 +401,14 @@ function HomePage({ business, servicedZips }) {
       bullets: ["Weekly/bi-weekly/monthly plans", "Early-morning options", "Professional invoicing"],
       href: "#/work/storefront",
     },
-    {
+   {
   key: "solar",
   title: "Solar Panel Cleaning",
   desc: "Safe methods designed for panels.",
   bullets: ["Soft brush + purified water", "Seasonal maintenance", "Before/after photos (optional)"],
-  href: `tel:${business.phoneTel}`,
+  href: "#/work/solar",
 },
+
 
     {
       key: "tint",
@@ -734,41 +735,55 @@ function ServiceWorkPage({
         </div>
       </section>
 
-{/* WORK SECTION (sliders + photos together) */}
-<section className="section" id="work-media">
-  <div className="wrap">
-    <SectionHead
-      title="See our work"
-      subtitle="Before/after examples + real job photos."
-    />
+      {/* WORK SECTION (supports sliders + photos) */}
+      <section className="section" id="work-media">
+        <div className="wrap">
+          {/* If BOTH exist: two-column layout (slider left, photo right) */}
+          {sliders?.length > 0 && photos?.length > 0 ? (
+            <div className="grid2">
+              <div>
+                <SectionHead title="Before & After" />
+                <div className="grid2">
+                  {sliders.map((s, idx) => (
+                    <BeforeAfterSlider
+                      key={`s-${idx}`}
+                      title={s.title}
+                      subtitle={s.subtitle}
+                      beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
+                      afterStyle={s.after ? photoBg(s.after) : afterGlass()}
+                    />
+                  ))}
+                </div>
+              </div>
 
-    <div className="grid2">
-      {sliders?.map((s, idx) => (
-        <BeforeAfterSlider
-          key={`s-${idx}`}
-          title={s.title}
-          subtitle={s.subtitle}
-          beforeStyle={photoBg(s.before)}
-          afterStyle={photoBg(s.after)}
-        />
-      ))}
-
-      {photos?.map((p, idx) => (
-        <Card key={`p-${idx}`} className="photoCard">
-          <div className="cardPad">
-            <div className="photoTop">
-              <div className="photoTitle">{p.title}</div>
-              {p.subtitle ? <div className="photoSub">{p.subtitle}</div> : null}
+              <div>
+                <SectionHead title="See our work" />
+                <PhotoBoxes items={photos} />
+              </div>
             </div>
-            <div className="photoFrame">
-              <div className="photoImg" style={photoBg(p.src)} />
-            </div>
-          </div>
-        </Card>
-      ))}
-    </div>
-  </div>
-</section>
+          ) : sliders?.length > 0 ? (
+            <>
+              <SectionHead title="Before & After" />
+              <div className="grid2">
+                {sliders.map((s, idx) => (
+                  <BeforeAfterSlider
+                    key={`s-${idx}`}
+                    title={s.title}
+                    subtitle={s.subtitle}
+                    beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
+                    afterStyle={s.after ? photoBg(s.after) : afterGlass()}
+                  />
+                ))}
+              </div>
+            </>
+          ) : photos?.length > 0 ? (
+            <>
+              <SectionHead title="See our work" />
+              <PhotoBoxes items={photos} />
+            </>
+          ) : null}
+        </div>
+      </section>
 
 
 
@@ -1110,62 +1125,62 @@ export default function App() {
   }, [route]);
 
   // Service pages
- if (route === "/work/windows") {
-  return (
-    <ServiceWorkPage
-      business={business}
-      title="Window Cleaning — See Our Work"
-      subtitle="Interior & exterior window cleaning with a premium finish, clear communication, and fair pricing across Los Angeles."
-      sliders={[
-        {
-          title: "Exterior glass clarity",
-          subtitle: "A clean view makes the whole home feel brighter.",
-          before: "/photos/exteriorglass-before1.jpeg",
-          after: "/photos/exteriorglass-after1.jpeg",
-        },
-      ]}
-      photos={[
-        {
-          title: "Window & screen scrub-down",
-          subtitle: "Full scrub + rinse with a 100% satisfaction guarantee.",
-          src: "/photos/scrubdown.jpeg",
-        },
-      ]}
-      seoTitle="Interior & Exterior Window Washing Services"
-      seoBlocks={[]}
-    />
-  );
-}
-
-
-            
-              "At Magic Glove Window Cleaning, we provide exterior and interior window cleaning across Los Angeles & surrounding areas. Homeowners choose us because we treat every home with care, communicate clearly, and aim for a finish you can feel proud of."
+  if (route === "/work/windows") {
+    return (
+      <ServiceWorkPage
+        business={business}
+        title="Window Cleaning — See Our Work"
+        subtitle="Interior & exterior window cleaning with a premium finish, clear communication, and fair pricing across Los Angeles."
+        sliders={[
+          {
+            title: "Exterior glass clarity",
+            subtitle: "A clean view makes the whole home feel brighter.",
+            before: "/photos/exteriorglass-before1.jpeg",
+            after: "/photos/exteriorglass-after1.jpeg",
+          },
+        ]}
+        photos={[
+          {
+            title: "Window & screen scrub-down"
+            ,
+            subtitle: "Thorough scrub-down with a 100% satisfaction guarantee.",
+            src: "/photos/scrubdown.jpeg",
+          },
+        ]}
+        seoTitle="Interior & Exterior Window Washing Services"
+        seoBlocks={[
+          {
+            p:
+              "At Magic Glove Window Cleaning, we provide exterior and interior window cleaning across Los Angeles & surrounding areas. Homeowners choose us because we treat every home with care, communicate clearly, and aim for a finish you can feel proud of.",
           },
           {
             h: "Why regular window cleaning matters",
             p:
-              "Over time, dust, grime, and buildup can dull your view and make your home feel less clean overall. Keeping windows maintained helps protect your glass, supports a brighter interior, and can help prevent long-term issues that lead to costly repairs."
+              "Over time, dust, grime, and buildup can dull your view and make your home feel less clean overall. Keeping windows maintained helps protect your glass, supports a brighter interior, and can help prevent long-term issues that lead to costly repairs.",
           },
           {
             h: "Our exterior window cleaning approach",
             p:
-              "We use safe, professional methods designed for the home. Our goal is a consistent, streak-free finish—then we do a final check to make sure it looks right from the inside too. The difference is in the details."
+              "We use safe, professional methods designed for the home. Our goal is a consistent, streak-free finish—then we do a final check to make sure it looks right from the inside too. The difference is in the details.",
           },
           {
             h: "Our interior window cleaning approach",
             p:
-              "When we work inside your home, we treat your space with respect. We take care around floors and furniture, work clean, and inspect our results before we leave. If you’re not happy, we’re not done."
+              "When we work inside your home, we treat your space with respect. We take care around floors and furniture, work clean, and inspect our results before we leave. If you’re not happy, we’re not done.",
           },
           {
             h: "How often should windows be cleaned?",
             p:
-              "Most LA homeowners benefit from cleaning twice a year—spring and fall. Some prefer quarterly for a consistently sharp look, especially in high-dust areas or near busy streets."
+              "Most LA homeowners benefit from cleaning twice a year—spring and fall. Some prefer quarterly for a consistently sharp look, especially in high-dust areas or near busy streets.",
           },
         ]}
       />
     );
   }
 
+
+
+            
   if (route === "/work/storefront") {
     return (
       <ServiceWorkPage
