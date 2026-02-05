@@ -1834,5 +1834,22 @@ a:hover{text-decoration:underline}
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
+/* ===== Windows work page: remove “inner frame” look so it feels wider ===== */
+#work-media .photoFrame{
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+#work-media .photoImg{
+  border-radius: 0 !important;
+}
+#work-media .photoTop{
+  padding: 18px 18px 12px !important;
+}
+
+#work-media .photoCard{
+  overflow: hidden;
+}
 
 `;
