@@ -734,27 +734,41 @@ function ServiceWorkPage({
         </div>
       </section>
 
-     {/* WORK SECTION (either sliders OR photo boxes) */}
-{sliders?.length ? (
-  <section className="section" id="work-sliders">
-    <div className="wrap">
-      <SectionHead
-        title="Before & After"
-        subtitle="Drag the glove to reveal the finish."
-      />
-      <div className="grid2">
-        {sliders.map((s, idx) => (
-          <BeforeAfterSlider
-            key={idx}
-            title={s.title}
-            subtitle={s.subtitle}
-            beforeStyle={photoBg(s.before)}
-            afterStyle={photoBg(s.after)}
-          />
-        ))}
-      </div>
+    {/* WORK SECTION (sliders + optional single photos) */}
+<section className="section" id="work-showcase">
+  <div className="wrap">
+    <SectionHead
+      title="See our work"
+      subtitle="Drag the glove to reveal the before/after — and see real job photos."
+    />
+
+    <div className="grid2">
+      {(sliders || []).map((s, idx) => (
+        <BeforeAfterSlider
+          key={`slider-${idx}`}
+          title={s.title}
+          subtitle={s.subtitle}
+          beforeStyle={photoBg(s.before)}
+          afterStyle={photoBg(s.after)}
+        />
+      ))}
+
+      {(photos || []).map((p, idx) => (
+        <Card key={`photo-${idx}`} className="photoCard">
+          <div className="cardPad">
+            <div className="photoTitle">{p.title}</div>
+            {p.subtitle ? <div className="photoSub">{p.subtitle}</div> : null}
+
+            <div className="photoFrame" style={{ marginTop: 12 }}>
+              <div className="photoImg" style={{ ...photoBg(p.src), height: 260, borderRadius: 18 }} />
+            </div>
+          </div>
+        </Card>
+      ))}
     </div>
-  </section>
+  </div>
+</section>
+
 ) : (
   <section className="section" id="work-photos">
     <div className="wrap">
@@ -1117,9 +1131,32 @@ export default function App() {
         title="Window Cleaning — See Our Work"
         subtitle="Interior & exterior window cleaning with a premium finish, clear communication, and fair pricing across Los Angeles."
         sliders={[
-          { title: "Exterior glass clarity", subtitle: "A clean view makes the whole home feel brighter." },
-          { title: "Screens & detailing (optional)", subtitle: "A stronger finish when you want it dialed in." },
-        ]}
+  {
+    title: "Exterior glass clarity",
+    subtitle: "A clean view makes the whole home feel brighter.",
+    before: "/photos/placeholder-before.jpeg",
+after: "/photos/placeholder-after.jpeg",
+
+  },
+]}
+photos={[
+  {
+    title: "Window & screen scrub-down",
+    subtitle: "Full scrub-down with a 100% satisfaction guarantee.",
+    src: "/photos/placeholder-single.jpeg",
+
+  },
+]}
+
+
+photos={[
+  {
+    title: "Window + screen scrub-down",
+    subtitle: "Thorough scrub-down with a 100% satisfaction guarantee.",
+    src: "/photos/residential-screens.jpeg",
+  },
+]}
+
         seoTitle="Interior & Exterior Window Washing Services"
         seoBlocks={[
           {
