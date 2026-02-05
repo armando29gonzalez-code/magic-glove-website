@@ -1786,5 +1786,27 @@ a:hover{text-decoration:underline}
 }
 .baRange{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor: ew-resize}
 .baHint{margin-top:10px;color: rgba(80,97,114,.90);font-size:12.5px}
+/* ===== Photo cards: reduce “big border” + make image feel larger ===== */
+.photoCard{overflow:hidden}
+
+.photoTop{
+  padding:18px 18px 0;
+}
+
+.photoFrame{
+  margin:12px 0 0;
+  height:340px;
+  border:none;
+  border-radius:0;
+  overflow:hidden;
+}
+
+.photoImg{
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
 
 `;
