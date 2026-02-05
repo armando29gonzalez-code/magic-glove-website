@@ -771,8 +771,17 @@ function ServiceWorkPage({
                     key={`s-${idx}`}
                     title={s.title}
                     subtitle={s.subtitle}
-                    beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
-                    afterStyle={s.after ? photoBg(s.after) : afterGlass()}
+                    beforeStyle={
+  s.before
+    ? { ...photoBg(s.before), backgroundPosition: s.pos || "center" }
+    : beforeGlass()
+}
+afterStyle={
+  s.after
+    ? { ...photoBg(s.after), backgroundPosition: s.pos || "center" }
+    : afterGlass()
+}
+
                   />
                 ))}
               </div>
@@ -1137,7 +1146,7 @@ export default function App() {
             subtitle: "A clean view makes the whole home feel brighter.",
             before: "/photos/exteriorglass-before1.jpeg",
             after: "/photos/exteriorglass-after1.jpeg",
-            height: 320,
+            height: 260,
           },
         ]}
         photos={[
