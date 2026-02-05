@@ -1808,5 +1808,17 @@ a:hover{text-decoration:underline}
   background-position:center;
   background-repeat:no-repeat;
 }
+/* ===== Photo grid: 2-up on desktop, stacked on mobile ===== */
+.photoGrid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:12px;
+}
+
+@media (max-width: 900px){
+  .photoGrid{
+    grid-template-columns:1fr;
+  }
+}
 
 `;
