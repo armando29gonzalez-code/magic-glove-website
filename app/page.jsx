@@ -744,13 +744,15 @@ function ServiceWorkPage({
                 <SectionHead title="Before & After" />
                 <div className="grid1">
                   {sliders.map((s, idx) => (
-                    <BeforeAfterSlider
-                      key={`s-${idx}`}
-                      title={s.title}
-                      subtitle={s.subtitle}
-                      beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
-                      afterStyle={s.after ? photoBg(s.after) : afterGlass()}
-                    />
+                   <BeforeAfterSlider
+  key={`s-${idx}`}
+  title={s.title}
+  subtitle={s.subtitle}
+  beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
+  afterStyle={s.after ? photoBg(s.after) : afterGlass()}
+  height={s.height}
+/>
+
                   ))}
                 </div>
               </div>
@@ -1135,6 +1137,7 @@ export default function App() {
             subtitle: "A clean view makes the whole home feel brighter.",
             before: "/photos/exteriorglass-before1.jpeg",
             after: "/photos/exteriorglass-after1.jpeg",
+            height: 420,
           },
         ]}
         photos={[
