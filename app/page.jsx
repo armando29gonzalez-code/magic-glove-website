@@ -1851,5 +1851,8 @@ a:hover{text-decoration:underline}
 #work-media .photoCard{
   overflow: hidden;
 }
+#work-media .photoFrame{
+  height: 360px !important;
+}
 
 `;
