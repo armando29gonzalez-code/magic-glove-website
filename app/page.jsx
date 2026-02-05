@@ -740,21 +740,21 @@ function ServiceWorkPage({
         <div className="wrap">
           {/* If BOTH exist: two-column layout (slider left, photo right) */}
           {sliders?.length > 0 && photos?.length > 0 ? (
-            <div className="grid2">
-              <div>
-                <SectionHead title="Before & After" />
-                <div className="grid2">
-                  {sliders.map((s, idx) => (
-                    <BeforeAfterSlider
-                      key={`s-${idx}`}
-                      title={s.title}
-                      subtitle={s.subtitle}
-                      beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
-                      afterStyle={s.after ? photoBg(s.after) : afterGlass()}
-                    />
-                  ))}
-                </div>
-              </div>
+           <div>
+  <SectionHead title="Before & After" />
+  <div className="grid1">
+    {sliders.map((s, idx) => (
+      <BeforeAfterSlider
+        key={`s-${idx}`}
+        title={s.title}
+        subtitle={s.subtitle}
+        beforeStyle={s.before ? photoBg(s.before) : beforeGlass()}
+        afterStyle={s.after ? photoBg(s.after) : afterGlass()}
+      />
+    ))}
+  </div>
+</div>
+
 
               <div>
                 <SectionHead title="See our work" />
@@ -764,7 +764,7 @@ function ServiceWorkPage({
           ) : sliders?.length > 0 ? (
             <>
               <SectionHead title="Before & After" />
-              <div className="grid2">
+              <div className="grid1">
                 {sliders.map((s, idx) => (
                   <BeforeAfterSlider
                     key={`s-${idx}`}
@@ -1443,23 +1443,24 @@ a:hover{text-decoration:underline}
 }
 
 /* Grids */
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.gridForm{margin-top:18px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
-.sideCol{display:grid;gap:12px}
+.grid1{display:grid;grid-template-columns:1fr;gap:12px}
 
-/* Before/after */
-.baCard{overflow:hidden}
-.baPad{padding:18px}
-.baTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
-.baTitle{font-weight:950;color: rgba(15,47,69,.96)}
-.baSub{margin-top:6px;color: rgba(80,97,114,.92);font-size:13px}
-.baBadges{display:flex;gap:8px}
-.baBadge{
-  border:1px solid rgba(15,47,69,.14);
-  background: rgba(255,255,255,.92);
-  padding:6px 10px;border-radius:999px;
-  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
+/* Photo boxes */
+.photoGrid{display:grid;grid-template-columns:1fr;gap:12px}
+.photoCard{overflow:hidden}
+.photoTop{padding:18px 18px 0}
+.photoTitle{font-weight:950;color: rgba(15,47,69,.96)}
+.photoSub{margin-top:6px;color: rgba(80,97,114,.92);font-size:13px}
+.photoFrame{
+  margin:12px 18px 18px;
+  height:260px;
+  border-radius: var(--radius);
+  overflow:hidden;
+  border:1px solid rgba(15,47,69,.12);
+  background: rgba(24,58,83,.04);
 }
+.photoImg{width:100%;height:100%}
+
 .baFrame{
   position:relative;border-radius: var(--radius);
   overflow:hidden;border:1px solid rgba(15,47,69,.12);
