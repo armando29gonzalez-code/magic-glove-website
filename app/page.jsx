@@ -1137,7 +1137,7 @@ export default function App() {
             subtitle: "A clean view makes the whole home feel brighter.",
             before: "/photos/exteriorglass-before1.jpeg",
             after: "/photos/exteriorglass-after1.jpeg",
-            height: 420,
+            height: 320,
           },
         ]}
         photos={[
@@ -1834,25 +1834,11 @@ a:hover{text-decoration:underline}
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
-/* ===== Windows work page: remove “inner frame” look so it feels wider ===== */
+
+/* ===== Windows work page: match photo height to slider (wider look) ===== */
 #work-media .photoFrame{
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
+  height: 320px !important;
 }
 
-#work-media .photoImg{
-  border-radius: 0 !important;
-}
-#work-media .photoTop{
-  padding: 18px 18px 12px !important;
-}
-
-#work-media .photoCard{
-  overflow: hidden;
-}
-#work-media .photoFrame{
-  height: 360px !important;
-}
 
 `;
