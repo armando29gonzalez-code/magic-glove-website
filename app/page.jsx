@@ -1147,6 +1147,7 @@ export default function App() {
             before: "/photos/exteriorglass-before1.jpeg",
             after: "/photos/exteriorglass-after1.jpeg",
             height: 260,
+            pos: "50% 35%",
           },
         ]}
         photos={[
