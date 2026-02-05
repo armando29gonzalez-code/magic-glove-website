@@ -1156,7 +1156,7 @@ export default function App() {
             subtitle: "A clean view makes the whole home feel brighter.",
             before: "/photos/exteriorglass-before1.jpeg",
             after: "/photos/exteriorglass-after1.jpeg",
-            height: 420,
+            height: 520,
             pos: "50% 35%",
           },
         ]}
