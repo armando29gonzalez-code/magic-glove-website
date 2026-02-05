@@ -1134,12 +1134,6 @@ export default function App() {
       seoTitle="Interior & Exterior Window Washing Services"
 seoBlocks={[]}
 
-        
-      ]}
-    />
-  );
-}
-
             
               "At Magic Glove Window Cleaning, we provide exterior and interior window cleaning across Los Angeles & surrounding areas. Homeowners choose us because we treat every home with care, communicate clearly, and aim for a finish you can feel proud of."
           },
