@@ -675,7 +675,7 @@ function HomePage({ business, servicedZips }) {
 /** Simple photo boxes (no before/after slider) */
 function PhotoBoxes({ items }) {
   return (
-    <div className="photoGrid">
+       <div className={cx("photoGrid", items?.length === 1 && "photoGridOne")}>
       {items.map((it, idx) => (
         <Card key={idx} className="photoCard">
           <div className="photoTop">
@@ -1813,6 +1813,10 @@ a:hover{text-decoration:underline}
   display:grid;
   grid-template-columns:repeat(2, 1fr);
   gap:12px;
+}
+/* If there is only ONE photo (windows scrubdown), make it full width */
+.photoGridOne{
+  grid-template-columns: 1fr;
 }
 
 @media (max-width: 900px){
