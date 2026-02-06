@@ -191,7 +191,7 @@ function TestimonialsCarousel({ slides, intervalMs = 5000 }) {
 }
 
 /** Zip checker */
-function ZipChecker({ servicedZips }) {
+function ZipChecker({ servicedZips, servicedZipPrefixes }) {
   const [zip, setZip] = useState("");
   const [status, setStatus] = useState("idle"); // idle | ok | no | invalid
 
@@ -201,8 +201,9 @@ function ZipChecker({ servicedZips }) {
     if (digits.length < 5) return setStatus("invalid");
     const z = digits.slice(0, 5);
     setZip(z);
-    if (servicedZips.has(z)) setStatus("ok");
-    else setStatus("no");
+    const prefix3 = z.slice(0, 3);
+if (servicedZips.has(z) || servicedZipPrefixes.has(prefix3)) setStatus("ok");
+else setStatus("no");
   }, [zip, servicedZips]);
 
   return (
@@ -357,7 +358,7 @@ function AppShell({ business, children }) {
   );
 }
 
-function HomePage({ business, servicedZips }) {
+function HomePage({ business, servicedZips, servicedZipPrefixes }) {
  const specialty = useMemo(() => ([
   {
     title: "Hard Water Removal (Options)",
@@ -565,7 +566,7 @@ function HomePage({ business, servicedZips }) {
         </div>
 
         {/* Keep the working zip checker (the one that says “We service this zip ✅”) */}
-        <ZipChecker servicedZips={servicedZips} />
+       <ZipChecker servicedZips={servicedZips} servicedZipPrefixes={servicedZipPrefixes} />
       </div>
     </div>
 
@@ -1163,17 +1164,37 @@ export default function App() {
       name: "Magic Glove Window Cleaning",
       phoneDisplay: "(818) 942-4177",
       phoneTel: formatPhoneForTel("8189424177"),
-      email: "Armando29gonzalez@gmail.com",
+      email: "info@magicglovecleaning.com",
       serviceArea: "Los Angeles & San Bernardino Counties",
     }),
     []
   );
 
-  const servicedZips = useMemo(() => new Set([
-    "91344","91325","91326","91324","91306","91406","91402",
-    "91505","91201","91103","91311","91331","91335",
-    "91730","91739","91701","91762","91764","92335","92336","92324"
-  ]), []);
+ const servicedZips = useMemo(() => new Set([
+  // keep your exact zips (optional “guaranteed yes” list)
+  "91344","91325","91326","91324","91306","91406","91402",
+  "91505","91201","91103","91311","91331","91335",
+  "91730","91739","91701","91762","91764","92335","92336","92324"
+]), []);
+
+const servicedZipPrefixes = useMemo(() => new Set([
+  // Los Angeles County (covers LA, SFV, Westside, South Bay, etc.)
+  "900","901","902","903","904","905","906","907","908",
+  "910","911","912","913","914","915","916",
+
+  // Ventura County (Oxnard, Ventura, Thousand Oaks, etc.)
+  "930",
+
+  // Santa Barbara County (Santa Barbara, Goleta, Santa Maria, Lompoc, etc.)
+  "931","932","934",
+
+  // Kern County (Bakersfield + surrounding)
+  "933","932","935",
+
+  // San Bernardino County (Inland Empire core)
+  "917","923","924"
+]), []);
+
 
   // Support #/estimate (guarded)
   useEffect(() => {
@@ -1336,7 +1357,8 @@ export default function App() {
 
   if (route === "/community") return <CommunityPage business={business} />;
 
-  return <HomePage business={business} servicedZips={servicedZips} />;
+  return <HomePage business={business} servicedZips={servicedZips} servicedZipPrefixes={servicedZipPrefixes} />;
+
 }
 
 /* ====== STYLES ====== */
