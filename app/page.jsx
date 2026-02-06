@@ -1246,11 +1246,7 @@ export default function App() {
         business={business}
         title="Tint Removal — See Our Work"
         subtitle="Clean removal with careful adhesive cleanup—so your glass looks clear again."
-        sliders={[
-          { title: "Tint removal finish", subtitle: "A clear look without haze." },
-          { title: "Adhesive cleanup", subtitle: "The detail step that changes everything." },
-        ]}
-        seoTitle="Window Tint Removal Services"
+  seoTitle="Window Tint Removal Services"
         seoBlocks={[
           {
             p:
