@@ -1934,6 +1934,31 @@ body::before{
   background: rgba(255,255,255,.72);
   backdrop-filter: blur(8px);
 }
+/* ===== Strong, always-visible brand backdrop ===== */
+.page{
+  position:relative;
+  isolation:isolate;
+}
+
+.page::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 780px at 8% 0%, rgba(31,78,121,.60), transparent 62%),
+    radial-gradient(1100px 720px at 92% 8%, rgba(70,185,138,.55), transparent 60%),
+    radial-gradient(900px 620px at 50% 100%, rgba(31,78,121,.30), transparent 65%),
+    linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+}
+
+/* Let the backdrop show through sections */
+.section,
+.section.alt{
+  background: rgba(255,255,255,.65) !important;
+  backdrop-filter: blur(10px);
+}
 
 
 `;
