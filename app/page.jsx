@@ -1240,37 +1240,38 @@ export default function App() {
   }
 
 
-  if (route === "/work/tint") {
-    return (
-      <ServiceWorkPage
-        business={business}
-        title="Tint Removal — See Our Work"
-        subtitle="Clean removal with careful adhesive cleanup—so your glass looks clear again."
-  seoTitle="Window Tint Removal Services"
-        seoBlocks={[
-          {
-            p:
-              "Old tint can peel, bubble, and leave glass looking messy. Magic Glove removes tint carefully and focuses on a clean finish—especially during the adhesive cleanup stage."
-          },
-          {
-            h: "Why tint removal is needed",
-            p:
-              "Aging tint can become cloudy, cracked, or uneven. Removing it restores clarity and can improve the overall look of your home or storefront."
-          },
-          {
-            h: "Our approach",
-            p:
-              "We use appropriate heat/steam methods when needed, remove film carefully, and then focus on adhesive cleanup so the glass looks clean and clear."
-          },
-          {
-            h: "What to expect",
-            p:
-              "Every job is different depending on the tint age and adhesive type. We’ll explain options clearly and set expectations upfront—no surprises."
-          },
-        ]}
-      />
-    );
-  }
+ if (route === "/work/tint") {
+  return (
+    <ServiceWorkPage
+      business={business}
+      title="Tint Removal — See Our Work"
+      subtitle="Clean removal with careful adhesive cleanup—so your glass looks clear again."
+      seoTitle="Window Tint Removal Services"
+      seoBlocks={[
+        {
+          p:
+            "Old tint can peel, bubble, and leave glass looking messy. Magic Glove removes tint carefully and focuses on a clean finish—especially during the adhesive cleanup stage."
+        },
+        {
+          h: "Why tint removal is needed",
+          p:
+            "Aging tint can become cloudy, cracked, or uneven. Removing it restores clarity and can improve the overall look of your home or storefront."
+        },
+        {
+          h: "Our approach",
+          p:
+            "We use appropriate heat/steam methods when needed, remove film carefully, and then focus on adhesive cleanup so the glass looks clean and clear."
+        },
+        {
+          h: "What to expect",
+          p:
+            "Every job is different depending on the tint age and adhesive type. We’ll explain options clearly and set expectations upfront—no surprises."
+        }
+      ]}
+    />
+  );
+}
+
 
   if (route === "/community") return <CommunityPage business={business} />;
 
