@@ -1890,6 +1890,41 @@ a:hover{text-decoration:underline}
 #work-media .photoFrame{
   height: 320px !important;
 }
+/* ===== Background color wash (blue/green like door hanger) ===== */
+:root{
+  --mg-blue: rgba(35, 83, 122, 0.10);
+  --mg-green: rgba(84, 168, 140, 0.10);
+  --mg-blue-2: rgba(35, 83, 122, 0.06);
+  --mg-green-2: rgba(84, 168, 140, 0.06);
+}
+
+/* Whole site background */
+body{
+  background:
+    radial-gradient(900px 520px at 12% 8%, var(--mg-blue), transparent 60%),
+    radial-gradient(900px 520px at 88% 12%, var(--mg-green), transparent 60%),
+    radial-gradient(1100px 650px at 50% 95%, var(--mg-blue-2), transparent 65%),
+    linear-gradient(180deg, rgba(248, 252, 255, 1) 0%, rgba(247, 252, 250, 1) 100%);
+}
+
+/* Add a little “sparkle/bubble” vibe behind sections (very subtle) */
+.section{
+  position: relative;
+}
+
+.section::before{
+  content:"";
+  position:absolute;
+  inset:-60px 0 -60px 0;
+  pointer-events:none;
+  background:
+    radial-gradient(18px 18px at 12% 30%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(14px 14px at 22% 70%, rgba(255,255,255,.45), transparent 60%),
+    radial-gradient(22px 22px at 78% 28%, rgba(255,255,255,.50), transparent 60%),
+    radial-gradient(16px 16px at 86% 68%, rgba(255,255,255,.40), transparent 60%);
+  opacity:.35;
+  filter: blur(.2px);
+}
 
 
 `;
