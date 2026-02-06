@@ -1947,11 +1947,12 @@ body::before{
   z-index:-1;
   pointer-events:none;
   background:
-    radial-gradient(1200px 780px at 8% 0%, rgba(31,78,121,.60), transparent 62%),
-    radial-gradient(1100px 720px at 92% 8%, rgba(70,185,138,.55), transparent 60%),
-    radial-gradient(900px 620px at 50% 100%, rgba(31,78,121,.30), transparent 65%),
-    linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+    radial-gradient(900px 600px at 0% 0%, rgba(31,78,121,.85), transparent 58%),
+    radial-gradient(900px 600px at 100% 0%, rgba(70,185,138,.80), transparent 58%),
+    radial-gradient(1200px 720px at 50% 110%, rgba(31,78,121,.45), transparent 65%),
+    linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(241,252,255,1) 100%);
 }
+
 
 /* Let the backdrop show through sections */
 .section,
