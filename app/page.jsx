@@ -1890,40 +1890,44 @@ a:hover{text-decoration:underline}
 #work-media .photoFrame{
   height: 320px !important;
 }
-/* ===== Background color wash (blue/green like door hanger) ===== */
+/* ===== More vibrant brand background (blue/green) ===== */
 :root{
-  --mg-blue: rgba(35, 83, 122, 0.10);
-  --mg-green: rgba(84, 168, 140, 0.10);
-  --mg-blue-2: rgba(35, 83, 122, 0.06);
-  --mg-green-2: rgba(84, 168, 140, 0.06);
+  --mg-blue: #1f4e79;   /* deep clean blue */
+  --mg-green: #46b98a;  /* fresh green */
+  --mg-ice: #f6fbff;
 }
 
-/* Whole site background */
+/* Full page background */
 body{
   background:
-    radial-gradient(900px 520px at 12% 8%, var(--mg-blue), transparent 60%),
-    radial-gradient(900px 520px at 88% 12%, var(--mg-green), transparent 60%),
-    radial-gradient(1100px 650px at 50% 95%, var(--mg-blue-2), transparent 65%),
-    linear-gradient(180deg, rgba(248, 252, 255, 1) 0%, rgba(247, 252, 250, 1) 100%);
+    radial-gradient(1100px 650px at 10% 0%, rgba(31,78,121,.30), transparent 60%),
+    radial-gradient(1000px 620px at 92% 8%, rgba(70,185,138,.28), transparent 58%),
+    radial-gradient(900px 520px at 50% 95%, rgba(31,78,121,.18), transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, var(--mg-ice) 100%);
 }
 
-/* Add a little “sparkle/bubble” vibe behind sections (very subtle) */
-.section{
-  position: relative;
-}
-
-.section::before{
+/* “Clean shimmer” pattern across the page (subtle, but visible) */
+body::before{
   content:"";
-  position:absolute;
-  inset:-60px 0 -60px 0;
+  position:fixed;
+  inset:0;
   pointer-events:none;
+  z-index:0;
+  opacity:.55;
   background:
-    radial-gradient(18px 18px at 12% 30%, rgba(255,255,255,.55), transparent 60%),
-    radial-gradient(14px 14px at 22% 70%, rgba(255,255,255,.45), transparent 60%),
-    radial-gradient(22px 22px at 78% 28%, rgba(255,255,255,.50), transparent 60%),
-    radial-gradient(16px 16px at 86% 68%, rgba(255,255,255,.40), transparent 60%);
-  opacity:.35;
+    radial-gradient(18px 18px at 12% 22%, rgba(255,255,255,.75), transparent 60%),
+    radial-gradient(14px 14px at 22% 68%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(22px 22px at 78% 26%, rgba(255,255,255,.70), transparent 60%),
+    radial-gradient(16px 16px at 86% 70%, rgba(255,255,255,.52), transparent 60%),
+    radial-gradient(10px 10px at 55% 40%, rgba(255,255,255,.40), transparent 60%),
+    radial-gradient(12px 12px at 48% 78%, rgba(255,255,255,.42), transparent 60%);
   filter: blur(.2px);
+}
+
+/* Make sure your actual page content stays above the background overlay */
+#root, main, .wrap, .section{
+  position:relative;
+  z-index:1;
 }
 
 
