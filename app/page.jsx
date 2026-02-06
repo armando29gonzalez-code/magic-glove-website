@@ -979,16 +979,18 @@ function CommunityPage({ business }) {
 
 function EstimateBlock({ business }) {
   const [form, setForm] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    city: "",
-    service: "Residential Window Cleaning",
-    propertyType: "Residential",
-    bestTime: "Morning (9–12)",
-    preferredContact: "Text",
-    comments: "",
-  });
+  fullName: "",
+  phone: "",
+  email: "",
+  city: "",
+  service: "Residential Window Cleaning",
+  propertyType: "Residential",
+  bestTime: "Morning (9–12)",
+  preferredContact: "Text",
+  referralSource: "", // ✅ add this
+  comments: "",
+});
+
 
   function onChange(e) {
     const { name, value } = e.target;
@@ -1035,6 +1037,45 @@ function EstimateBlock({ business }) {
                   <option>Other / Not sure</option>
                 </select>
               </div>
+<div className="span2">
+  <label>How did you hear about us?</label>
+
+  <div className="ddWrap">
+    <button
+      type="button"
+      className="ddBtn"
+      onClick={() => setForm((p) => ({ ...p, _ddOpen: !p._ddOpen }))}
+      aria-haspopup="listbox"
+      aria-expanded={!!form._ddOpen}
+    >
+      <span className={form.referralSource ? "ddValue" : "ddPlaceholder"}>
+        {form.referralSource || "How did you hear about us?"}
+      </span>
+      <span className={cx("ddChevron", form._ddOpen && "ddChevronUp")}>⌄</span>
+    </button>
+
+    <div className={cx("ddMenu", form._ddOpen && "ddMenuOpen")} role="listbox">
+      {["Business Card/Door Hanger", "Referred", "Other"].map((opt) => (
+        <button
+          key={opt}
+          type="button"
+          className="ddOption"
+          role="option"
+          aria-selected={form.referralSource === opt}
+          onClick={() =>
+            setForm((p) => ({
+              ...p,
+              referralSource: opt,
+              _ddOpen: false,
+            }))
+          }
+        >
+          {opt}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
 
               <div>
                 <label>Property Type</label>
@@ -1734,7 +1775,63 @@ a:hover{text-decoration:underline}
 .span2{grid-column:span 2}
 .formBtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 .twoBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ddWrap{position:relative;margin-top:6px}
+.ddBtn{
+  width:100%;
+  border:1px solid rgba(15,47,69,.16);
+  border-radius:16px;
+  padding:11px 12px;
+  font-size:14px;
+  outline:none;
+  background: rgba(255,255,255,.98);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+}
+.ddBtn:focus{
+  border-color: rgba(31,183,165,.65);
+  box-shadow: 0 0 0 4px rgba(31,183,165,.20);
+}
+.ddPlaceholder{color: rgba(80,97,114,.78); font-weight:850;}
+.ddValue{color: rgba(15,47,69,.92); font-weight:900;}
+.ddChevron{transition: transform .16s ease; opacity:.75; font-weight:900;}
+.ddChevronUp{transform: rotate(180deg);}
 
+.ddMenu{
+  position:absolute;
+  left:0; right:0;
+  top: calc(100% + 8px);
+  background: rgba(255,255,255,.98);
+  border:1px solid rgba(15,47,69,.14);
+  border-radius:16px;
+  box-shadow: 0 18px 55px rgba(15,47,69,.12);
+  overflow:hidden;
+
+  max-height:0;
+  opacity:0;
+  transform: translateY(-6px);
+  pointer-events:none;
+  transition: max-height .22s ease, opacity .18s ease, transform .18s ease;
+}
+.ddMenuOpen{
+  max-height:220px;
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+}
+
+.ddOption{
+  width:100%;
+  text-align:left;
+  padding:12px 12px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-weight:900;
+  color: rgba(15,47,69,.92);
+}
+.ddOption:hover{background: rgba(31,183,165,.10);}
 /* Work pages */
 .workHero{position:relative;padding: 44px 0 24px; overflow:hidden}
 .workHeroBg{
