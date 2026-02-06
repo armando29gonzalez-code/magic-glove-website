@@ -1314,27 +1314,95 @@ const styles = `
   --shadow2: 0 10px 30px rgba(15,47,69,.08);
   --radius: 22px;
   --wrap: 1120px;
+
+  /* Door-hanger bold palette */
+  --mgBlue:#1f4e79;
+  --mgBlueDeep:#0f3550;
+  --mgTeal:#1fb7a5;
+  --mgGreen:#46b98a;
+  --mgMint:#bfeedd;
+  --mgIce:#f4fbff;
+
+  /* Sparkle highlights */
+  --spark: rgba(255,255,255,.92);
+  --sparkSoft: rgba(255,255,255,.55);
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--ink);
+
+  /* Bold door-hanger background */
   background:
-    radial-gradient(1000px 700px at 10% 0%, rgba(147,182,164,.18), transparent 55%),
-    radial-gradient(900px 650px at 85% 10%, rgba(24,58,83,.10), transparent 60%),
-    linear-gradient(180deg, #ffffff, var(--bg));
+    radial-gradient(1000px 700px at 10% 8%, rgba(31,78,121,.55), transparent 62%),
+    radial-gradient(980px 680px at 92% 10%, rgba(31,183,165,.46), transparent 60%),
+    radial-gradient(1100px 720px at 50% 112%, rgba(70,185,138,.34), transparent 64%),
+    linear-gradient(180deg, #ffffff 0%, var(--mgIce) 55%, #ffffff 100%);
 }
+
+/* BIG bubbles + sparkle (door hanger vibe) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-80px;
+  pointer-events:none;
+  z-index:0;
+  opacity:.92;
+  background:
+    /* bubbles (large) */
+    radial-gradient(40px 40px at 10% 20%, rgba(255,255,255,.55), transparent 62%),
+    radial-gradient(52px 52px at 22% 38%, rgba(255,255,255,.40), transparent 64%),
+    radial-gradient(34px 34px at 34% 14%, rgba(255,255,255,.42), transparent 62%),
+    radial-gradient(70px 70px at 78% 22%, rgba(255,255,255,.38), transparent 66%),
+    radial-gradient(44px 44px at 90% 44%, rgba(255,255,255,.36), transparent 64%),
+    radial-gradient(60px 60px at 64% 68%, rgba(255,255,255,.33), transparent 66%),
+    radial-gradient(36px 36px at 18% 78%, rgba(255,255,255,.38), transparent 64%),
+
+    /* tiny bubbles (sprinkle) */
+    radial-gradient(16px 16px at 28% 56%, rgba(255,255,255,.40), transparent 62%),
+    radial-gradient(14px 14px at 46% 30%, rgba(255,255,255,.36), transparent 62%),
+    radial-gradient(18px 18px at 56% 44%, rgba(255,255,255,.34), transparent 62%),
+    radial-gradient(12px 12px at 72% 58%, rgba(255,255,255,.34), transparent 62%),
+    radial-gradient(14px 14px at 86% 76%, rgba(255,255,255,.30), transparent 62%),
+
+    /* sparkles (pinpoint glints) */
+    radial-gradient(2px 2px at 14% 12%, var(--spark), transparent 55%),
+    radial-gradient(2px 2px at 18% 64%, var(--sparkSoft), transparent 55%),
+    radial-gradient(2px 2px at 44% 22%, var(--spark), transparent 55%),
+    radial-gradient(2px 2px at 52% 78%, var(--sparkSoft), transparent 55%),
+    radial-gradient(2px 2px at 74% 16%, var(--spark), transparent 55%),
+    radial-gradient(2px 2px at 92% 32%, var(--sparkSoft), transparent 55%),
+    radial-gradient(2px 2px at 80% 72%, var(--spark), transparent 55%);
+  filter: blur(.25px);
+}
+
+/* A soft “glass sheen” layer */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.55) 0%, transparent 35%),
+    linear-gradient(245deg, rgba(255,255,255,.35) 0%, transparent 30%);
+  opacity:.35;
+}
+
 a{color:inherit;text-decoration:none}
 a:hover{text-decoration:underline}
-.page{min-height:100vh}
+
+.page{min-height:100vh; position:relative; z-index:1}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 18px}
 
 /* Top strip */
 .topStrip{
-  background: rgba(255,255,255,.78);
+  background: rgba(255,255,255,.82);
   border-bottom:1px solid var(--line);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
 }
 .topStripInner{
   display:flex;gap:10px;justify-content:space-between;align-items:center;
@@ -1342,22 +1410,22 @@ a:hover{text-decoration:underline}
 }
 .pills{display:flex;gap:8px;flex-wrap:wrap}
 .pill{
-  border:1px solid rgba(147,182,164,.35);
-  background: rgba(255,255,255,.72);
+  border:1px solid rgba(31,183,165,.32);
+  background: rgba(255,255,255,.78);
   padding:6px 10px;border-radius:999px;
-  font-size:12px;font-weight:800;color: rgba(15,47,69,.78);
+  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
   box-shadow: 0 1px 0 rgba(15,47,69,.06);
 }
 .topStripRight{display:flex;gap:10px;align-items:center;font-size:13px;flex-wrap:wrap;color: rgba(15,47,69,.75)}
 .topDot{color: rgba(15,47,69,.25)}
-.topLink{font-weight:700}
+.topLink{font-weight:800}
 
 /* Nav */
 .nav{
   position:sticky;top:0;z-index:50;
-  background: rgba(255,255,255,.90);
+  background: rgba(255,255,255,.92);
   border-bottom:1px solid var(--line);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
 }
 .navInner{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
@@ -1366,36 +1434,50 @@ a:hover{text-decoration:underline}
 .brand{display:flex;align-items:center}
 .brand:hover{text-decoration:none}
 .logoBox{
-  width:44px;height:44px;border:1px solid rgba(147,182,164,.45);
+  width:44px;height:44px;border:1px solid rgba(31,183,165,.34);
   border-radius:16px;
   background:
-    radial-gradient(22px 22px at 30% 30%, rgba(147,182,164,.22), transparent 60%),
-    rgba(255,255,255,.90);
+    radial-gradient(26px 26px at 30% 30%, rgba(31,183,165,.18), transparent 60%),
+    rgba(255,255,255,.94);
   overflow:hidden;display:grid;place-items:center;position:relative;
   box-shadow: var(--shadow2);
 }
 .logoBox img{width:100%;height:100%;object-fit:contain;display:block}
 .logoFallback{position:absolute;font-size:12px;font-weight:950;color: rgba(24,58,83,.80)}
-.navLinks{display:none;gap:18px;font-size:14px;font-weight:800;color: rgba(15,47,69,.70)}
+.navLinks{display:none;gap:18px;font-size:14px;font-weight:900;color: rgba(15,47,69,.70)}
 .navLinks a:hover{text-decoration:none;color: rgba(15,47,69,.92)}
 .navCtas{display:flex;gap:10px}
 
-/* Buttons */
+/* Buttons — bolder + “sparkle” */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
-  padding:11px 14px;border-radius:16px;font-size:14px;font-weight:900;
+  padding:11px 14px;border-radius:16px;font-size:14px;font-weight:950;
   border:1px solid transparent;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
   cursor:pointer;
+  position:relative;
+  overflow:hidden;
 }
+.btn::before{
+  content:"";
+  position:absolute;inset:-2px;
+  background: linear-gradient(120deg, rgba(255,255,255,.45), transparent 35%, rgba(255,255,255,.25));
+  transform: translateX(-55%);
+  opacity:.0;
+  transition: opacity .12s ease, transform .35s ease;
+}
+.btn:hover::before{opacity:.55; transform: translateX(10%);}
+
 .btnPrimary{
-  background: linear-gradient(180deg, rgba(24,58,83,.98), rgba(15,47,69,.98));
+  background:
+    radial-gradient(18px 18px at 20% 25%, rgba(255,255,255,.55), transparent 55%),
+    linear-gradient(180deg, rgba(31,78,121,.98), rgba(15,53,80,.98));
   color: #fff;
-  box-shadow: 0 12px 30px rgba(15,47,69,.16);
+  box-shadow: 0 14px 34px rgba(15,47,69,.18);
 }
-.btnPrimary:hover{transform:translateY(-1px);text-decoration:none}
+.btnPrimary:hover{transform:translateY(-1px);text-decoration:none;filter:saturate(1.06)}
 .btnOutline{
-  background: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.88);
   color: rgba(15,47,69,.92);
   border-color: rgba(15,47,69,.16);
   box-shadow: var(--shadow2);
@@ -1411,7 +1493,6 @@ a:hover{text-decoration:underline}
   font-weight: 950;
   color: rgba(15,47,69,.98);
 }
-
 .h2{
   margin:0;
   font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -1419,19 +1500,20 @@ a:hover{text-decoration:underline}
   font-weight: 950;
   color: rgba(15,47,69,.98);
 }
-
 .h3{margin:0;font-size:18px;letter-spacing:-.01em;color: rgba(15,47,69,.96);font-weight:950}
 .sub{margin-top:6px;color: rgba(80,97,114,.92);font-size:14.5px;max-width:86ch}
 .sectionHead{display:grid;gap:6px;margin-bottom:18px}
 .sectionHeadCenter{text-align:center;align-items:center}
 .mutedText{margin-top:6px;color: rgba(80,97,114,.92);font-size:13.5px}
 
-/* Cards */
+/* Cards — slightly more pop */
 .card{
-  border:1px solid var(--line);
-  background: var(--card);
+  border:1px solid rgba(15,47,69,.10);
+  background:
+    radial-gradient(220px 160px at 18% 12%, rgba(31,183,165,.08), transparent 58%),
+    rgba(255,255,255,.96);
   border-radius: var(--radius);
-  box-shadow: var(--shadow2);
+  box-shadow: 0 14px 40px rgba(15,47,69,.10);
 }
 .cardPad{padding:18px}
 .cardTitle{font-weight:950;color: rgba(15,47,69,.96)}
@@ -1441,26 +1523,27 @@ a:hover{text-decoration:underline}
 .heroVideoWrap{
   position:absolute;inset:0;
   background:
-    radial-gradient(900px 600px at 15% 15%, rgba(147,182,164,.18), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.25));
+    radial-gradient(960px 640px at 10% 20%, rgba(31,78,121,.34), transparent 62%),
+    radial-gradient(900px 600px at 92% 12%, rgba(31,183,165,.28), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.30));
 }
 .heroVideo{
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;
   opacity:.58;
-  filter: saturate(1.10) contrast(1.08);
+  filter: saturate(1.15) contrast(1.10);
 }
 .heroOverlay{
   position:absolute;inset:0;
-  background: linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.80));
+  background: linear-gradient(180deg, rgba(255,255,255,.56), rgba(255,255,255,.84));
 }
 .heroInner{position:relative;z-index:1}
 .heroTopRow{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-bottom:12px}
 .heroBrand{display:flex;align-items:center;gap:12px}
 .heroLogoBox{
   width:50px;height:50px;border-radius:18px;
-  border:1px solid rgba(147,182,164,.55);
+  border:1px solid rgba(31,183,165,.38);
   background: rgba(255,255,255,.96);
   box-shadow: var(--shadow2);
   overflow:hidden;display:grid;place-items:center;position:relative;
@@ -1468,24 +1551,30 @@ a:hover{text-decoration:underline}
 .heroLogoBox img{width:100%;height:100%;object-fit:contain;display:block}
 .heroBrandText{display:grid;gap:4px}
 .heroName{font-weight:950;letter-spacing:-.02em;color: rgba(15,47,69,.98)}
-.heroTag{font-size:12px;color: rgba(80,97,114,.92);font-weight:700}
+.heroTag{font-size:12px;color: rgba(80,97,114,.92);font-weight:800}
 .heroPills{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 
 .heroContent{margin-top:10px;max-width: 920px;padding:8px 0 4px}
-.accent{color: rgba(147,182,164,.95)}
+.accent{color: rgba(31,183,165,.92)}
 .heroLong{margin-top:14px;font-size:15.8px;line-height:1.7;color: rgba(30,56,74,.88)}
 .heroCtas{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 
 /* Sections */
 .section{padding:56px 0}
+
+/* Alt section now has door-hanger “bubble wash” */
 .section.alt{
-  background: rgba(255,255,255,.72);
+  background:
+    radial-gradient(520px 280px at 18% 14%, rgba(31,183,165,.12), transparent 65%),
+    radial-gradient(520px 280px at 86% 26%, rgba(31,78,121,.10), transparent 65%),
+    rgba(255,255,255,.78);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
 
-/* Grids */
+/* Grids (layout unchanged) */
 .grid1{display:grid;grid-template-columns:1fr;gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px;align-items:stretch}
 
 /* Photo boxes */
 .photoGrid{display:grid;grid-template-columns:1fr;gap:12px}
@@ -1503,6 +1592,23 @@ a:hover{text-decoration:underline}
 }
 .photoImg{width:100%;height:100%}
 
+/* Before/After slider */
+.baCard{overflow:hidden}
+.baPad{padding:18px}
+.baTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.baTitle{
+  font-weight:950;
+  color: rgba(15,47,69,.96);
+  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+.baSub{margin-top:6px;color: rgba(80,97,114,.92);font-size:13px;font-weight:850}
+.baBadges{display:flex;gap:8px}
+.baBadge{
+  border:1px solid rgba(15,47,69,.14);
+  background: rgba(255,255,255,.92);
+  padding:6px 10px;border-radius:999px;
+  font-size:12px;font-weight:950;color: rgba(15,47,69,.78);
+}
 .baFrame{
   position:relative;border-radius: var(--radius);
   overflow:hidden;border:1px solid rgba(15,47,69,.12);
@@ -1514,22 +1620,24 @@ a:hover{text-decoration:underline}
   border:1px solid rgba(15,47,69,.14);
   background: rgba(255,255,255,.92);
   padding:6px 10px;border-radius:999px;
-  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
+  font-size:12px;font-weight:950;color: rgba(15,47,69,.78);
 }
 .baDivider{
   position:absolute;top:0;bottom:0;width:2px;
-  background: rgba(147,182,164,.95);
+  background: rgba(31,183,165,.95);
   transform: translateX(-1px);
-  box-shadow: 0 0 0 3px rgba(147,182,164,.18);
+  box-shadow: 0 0 0 4px rgba(31,183,165,.18);
 }
 .gloveHandle{
   position:absolute;top:50%;left:50%;
   transform: translate(-50%, -50%);
-  width:46px;height:46px;border-radius:999px;
+  width:48px;height:48px;border-radius:999px;
   display:grid;place-items:center;
-  background: rgba(255,255,255,.92);
+  background:
+    radial-gradient(14px 14px at 28% 28%, rgba(255,255,255,.92), transparent 60%),
+    rgba(255,255,255,.92);
   border:1px solid rgba(15,47,69,.18);
-  box-shadow: var(--shadow2);
+  box-shadow: 0 14px 36px rgba(15,47,69,.14);
   font-size:18px;
 }
 .baRange{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor: ew-resize}
@@ -1540,30 +1648,30 @@ a:hover{text-decoration:underline}
 .ctaRow{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 .zipBox{
   margin-top:12px;border:1px solid rgba(15,47,69,.12);
-  background: rgba(255,255,255,.90);
+  background: rgba(255,255,255,.92);
   border-radius:18px;padding:12px;box-shadow: var(--shadow2);
 }
-.zipLabel{font-size:12px;font-weight:900;color: rgba(15,47,69,.80)}
+.zipLabel{font-size:12px;font-weight:950;color: rgba(15,47,69,.80)}
 .zipRow{display:grid;grid-template-columns: 150px 1fr;gap:10px;align-items:center;margin-top:8px}
 .zipInput{
   width:100%;padding:10px 12px;border-radius:14px;border:1px solid rgba(15,47,69,.16);
-  outline:none;font-weight:800;
+  outline:none;font-weight:900;
 }
-.zipInput:focus{box-shadow: 0 0 0 4px rgba(147,182,164,.25); border-color: rgba(147,182,164,.75)}
+.zipInput:focus{box-shadow: 0 0 0 4px rgba(31,183,165,.20); border-color: rgba(31,183,165,.65)}
 .zipStatus{
-  font-size:12.5px;font-weight:900;padding:10px 12px;border-radius:14px;
+  font-size:12.5px;font-weight:950;padding:10px 12px;border-radius:14px;
   background: rgba(24,58,83,.04);border:1px solid rgba(15,47,69,.10);color: rgba(15,47,69,.76);
 }
-.zipOk{background: rgba(147,182,164,.20); border-color: rgba(147,182,164,.45)}
+.zipOk{background: rgba(31,183,165,.16); border-color: rgba(31,183,165,.36)}
 .zipNo{background: rgba(24,58,83,.05)}
 
 /* Service card */
 .cardHeaderRow{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .check{
   width:38px;height:38px;border-radius:16px;display:grid;place-items:center;
-  background: linear-gradient(180deg, rgba(147,182,164,.95), rgba(127,165,146,.95));
+  background: linear-gradient(180deg, rgba(31,183,165,.95), rgba(70,185,138,.92));
   color: rgba(15,47,69,.92);font-weight:950;
-  box-shadow: 0 12px 26px rgba(147,182,164,.18);
+  box-shadow: 0 14px 34px rgba(31,183,165,.18);
 }
 .bullets{margin:12px 0 0;padding-left:16px;color: rgba(80,97,114,.96);font-size:13.5px}
 .cardBtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
@@ -1576,8 +1684,8 @@ a:hover{text-decoration:underline}
 .testSourceRow{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .testSource{
   font-weight:950;color: rgba(15,47,69,.92);
-  border:1px solid rgba(147,182,164,.55);
-  background: rgba(147,182,164,.12);
+  border:1px solid rgba(31,183,165,.50);
+  background: rgba(31,183,165,.12);
   padding:6px 10px;border-radius:999px;
 }
 .testStars{color: rgba(15,47,69,.80); letter-spacing:.10em; font-weight:950}
@@ -1590,19 +1698,21 @@ a:hover{text-decoration:underline}
 .testCtaRow{margin-top:16px}
 .testDots{display:flex;gap:8px}
 .dotBtn{width:10px;height:10px;border-radius:999px;border:none;background: rgba(15,47,69,.18); cursor:pointer}
-.dotBtnOn{background: rgba(147,182,164,.95)}
+.dotBtnOn{background: rgba(31,183,165,.95)}
 
 /* How it works */
 .howGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
 .howStep{
-  text-align:left;border:1px solid var(--line);background: var(--card);
-  border-radius: var(--radius);padding:18px;box-shadow: var(--shadow2);
+  text-align:left;border:1px solid rgba(15,47,69,.10);
+  background: rgba(255,255,255,.94);
+  border-radius: var(--radius);padding:18px;
+  box-shadow: 0 14px 40px rgba(15,47,69,.10);
   cursor:pointer;transition: transform .12s ease, box-shadow .12s ease;
 }
-.howStep:hover{transform: translateY(-2px); box-shadow: var(--shadow)}
+.howStep:hover{transform: translateY(-2px); box-shadow: 0 18px 55px rgba(15,47,69,.12)}
 .howNum{
   width:34px;height:34px;border-radius:14px;display:grid;place-items:center;
-  background: rgba(147,182,164,.18);border:1px solid rgba(147,182,164,.45);
+  background: rgba(31,183,165,.16);border:1px solid rgba(31,183,165,.38);
   font-weight:950;color: rgba(15,47,69,.92);
 }
 .howTitle{margin-top:10px;font-weight:950;color: rgba(15,47,69,.95)}
@@ -1610,7 +1720,7 @@ a:hover{text-decoration:underline}
 
 /* Forms */
 .formGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.formGrid label{display:block;font-size:13px;font-weight:900;color: rgba(15,47,69,.88)}
+.formGrid label{display:block;font-size:13px;font-weight:950;color: rgba(15,47,69,.88)}
 .formGrid input,.formGrid select,.formGrid textarea{
   margin-top:6px;width:100%;
   border:1px solid rgba(15,47,69,.16);
@@ -1618,8 +1728,8 @@ a:hover{text-decoration:underline}
   background: rgba(255,255,255,.98);
 }
 .formGrid input:focus,.formGrid select:focus,.formGrid textarea:focus{
-  border-color: rgba(147,182,164,.75);
-  box-shadow: 0 0 0 4px rgba(147,182,164,.25);
+  border-color: rgba(31,183,165,.65);
+  box-shadow: 0 0 0 4px rgba(31,183,165,.20);
 }
 .span2{grid-column:span 2}
 .formBtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
@@ -1630,9 +1740,9 @@ a:hover{text-decoration:underline}
 .workHeroBg{
   position:absolute; inset:0;
   background:
-    radial-gradient(900px 560px at 20% 10%, rgba(147,182,164,.22), transparent 60%),
-    radial-gradient(900px 560px at 85% 20%, rgba(24,58,83,.12), transparent 62%),
-    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.60));
+    radial-gradient(960px 620px at 18% 16%, rgba(31,183,165,.18), transparent 60%),
+    radial-gradient(900px 560px at 86% 20%, rgba(31,78,121,.14), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.62));
 }
 .workHeroInner{position:relative}
 .workCrumb{color: rgba(80,97,114,.92);font-weight:850;font-size:13px}
@@ -1641,42 +1751,10 @@ a:hover{text-decoration:underline}
 .workSub{margin-top:12px;max-width: 80ch;color: rgba(30,56,74,.86);line-height:1.65}
 .workBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 
-/* SEO pad */
-.seoPad{padding: 22px}
-.seoTitle{
-  font-weight:950;
-  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: 22px;
-  color: rgba(15,47,69,.98);
-}
-.seoBlock{margin-top:14px}
-.seoH{font-weight:950;color: rgba(15,47,69,.96);margin-bottom:6px}
-.seoP{color: rgba(80,97,114,.95);line-height:1.7}
-.seoCta{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.seoCtaLine{font-weight:900;color: rgba(15,47,69,.92);line-height:1.5}
-.seoCtaBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-
-/* Community page */
-.communityHero{padding: 46px 0 56px}
-.communityTop{max-width: 920px}
-.communityTitle{margin-bottom: 10px}
-.communitySub{color: rgba(80,97,114,.92);font-size:15.5px;line-height:1.6;margin-top:10px}
-.communityBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.longForm .lfH{font-weight:950;font-size:18px;color: rgba(15,47,69,.98)}
-.longForm .lfP{margin-top:8px;color: rgba(80,97,114,.92);line-height:1.6}
-.longForm .lfBlock{margin-top:16px}
-.longForm .lfTitle{font-weight:950;color: rgba(15,47,69,.98);margin-bottom:6px}
-.longForm .lfText{color: rgba(80,97,114,.95);line-height:1.65;margin-top:8px}
-.lfList{margin:10px 0 0;padding-left:18px;color: rgba(80,97,114,.95);line-height:1.65}
-.lfBullets{margin:10px 0 0;padding-left:18px;color: rgba(80,97,114,.95);line-height:1.65}
-.lfCta{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
-.lfCtaLine{font-weight:900;color: rgba(15,47,69,.92);line-height:1.5}
-.lfCtaBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-
 /* Footer */
 .footer{
-  background: rgba(255,255,255,.85);
-  border-top:1px solid var(--line);
+  background: rgba(255,255,255,.88);
+  border-top:1px solid rgba(15,47,69,.10);
   padding: 44px 0;
 }
 .footerInner{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}
@@ -1686,11 +1764,11 @@ a:hover{text-decoration:underline}
   font-size: 18px;
   color: rgba(15,47,69,.98);
 }
-.footSub{margin-top:6px;color: rgba(80,97,114,.92);font-weight:800;font-size:13px}
+.footSub{margin-top:6px;color: rgba(80,97,114,.92);font-weight:850;font-size:13px}
 .footContact{margin-top:12px;color: rgba(80,97,114,.92);font-size:13px;line-height:1.6}
-.footContact a{font-weight:900}
+.footContact a{font-weight:950}
 .footTitle{font-weight:950;color: rgba(15,47,69,.98)}
-.footLinks{display:grid;gap:8px;margin-top:10px;color: rgba(15,47,69,.78);font-weight:900}
+.footLinks{display:grid;gap:8px;margin-top:10px;color: rgba(15,47,69,.78);font-weight:950}
 .footText{margin-top:10px;color: rgba(80,97,114,.92);line-height:1.6;font-size:13px}
 .footBtnRow{margin-top:12px}
 .footBottom{margin-top:20px;color: rgba(80,97,114,.90);font-size:12px}
@@ -1702,6 +1780,7 @@ a:hover{text-decoration:underline}
   padding:0 14px;gap:10px;
 }
 .mobileSpacer{display:none;height:92px}
+.full{width:100%}
 
 /* Responsive */
 @media (min-width: 980px){ .navLinks{display:flex} }
@@ -1719,247 +1798,4 @@ a:hover{text-decoration:underline}
   .mobileCta{display:grid;grid-template-columns:1fr 1fr}
   .mobileSpacer{display:block}
 }
-/* ===== Services layout (match earlier centered look) ===== */
-
-.servicesHeadRow{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:26px;
-  flex-wrap:wrap;
-}
-
-.servicesHeadLeft{
-  flex:1;
-  min-width:320px;
-}
-
-.servicesHeadRight{
-  width:420px;
-  max-width:100%;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.zipCard{
-  width:100%;
-}
-
-/* Make the service cards smaller + centered (not full width) */
-.servicesGrid{
-  margin-top:18px;
-  max-width:980px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* Optional: tighten spacing a bit */
-.servicesGrid.grid2{
-  gap:18px;
-}
-
-/* Mobile: stack nicely */
-@media (max-width: 900px){
-  .servicesHeadRight{
-    width:100%;
-  }
-  .servicesGrid{
-    max-width:100%;
-  }
-}
-/* ===== Before/After slider typography + layout (restored) ===== */
-.baCard{overflow:hidden}
-.baPad{padding:18px}
-.baTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
-
-.baTitle{
-  font-weight:950;
-  color: rgba(15,47,69,.96);
-  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-}
-.baSub{
-  margin-top:6px;
-  color: rgba(80,97,114,.92);
-  font-size:13px;
-  font-weight:800;
-}
-
-.baBadges{display:flex;gap:8px}
-.baBadge{
-  border:1px solid rgba(15,47,69,.14);
-  background: rgba(255,255,255,.92);
-  padding:6px 10px;border-radius:999px;
-  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
-}
-.baFrame{
-  position:relative;border-radius: var(--radius);
-  overflow:hidden;border:1px solid rgba(15,47,69,.12);
-  background: rgba(24,58,83,.04);
-}
-.baLayer{position:absolute;inset:0}
-.baCornerTag{
-  position:absolute;top:12px;left:12px;
-  border:1px solid rgba(15,47,69,.14);
-  background: rgba(255,255,255,.92);
-  padding:6px 10px;border-radius:999px;
-  font-size:12px;font-weight:900;color: rgba(15,47,69,.78);
-}
-.baDivider{
-  position:absolute;top:0;bottom:0;width:2px;
-  background: rgba(147,182,164,.95);
-  transform: translateX(-1px);
-  box-shadow: 0 0 0 3px rgba(147,182,164,.18);
-}
-.gloveHandle{
-  position:absolute;top:50%;left:50%;
-  transform: translate(-50%, -50%);
-  width:46px;height:46px;border-radius:999px;
-  display:grid;place-items:center;
-  background: rgba(255,255,255,.92);
-  border:1px solid rgba(15,47,69,.18);
-  box-shadow: var(--shadow2);
-  font-size:18px;
-}
-.baRange{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor: ew-resize}
-.baHint{margin-top:10px;color: rgba(80,97,114,.90);font-size:12.5px}
-/* ===== Photo cards: reduce “big border” + make image feel larger ===== */
-.photoCard{overflow:hidden}
-
-.photoTop{
-  padding:18px 18px 0;
-}
-
-.photoFrame{
-  margin:12px 0 0;
-  height:340px;
-  border:none;
-  border-radius:0;
-  overflow:hidden;
-}
-
-.photoImg{
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
-/* ===== Photo grid: 2-up on desktop, stacked on mobile ===== */
-.photoGrid{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:12px;
-}
-/* If there is only ONE photo (windows scrubdown), make it full width */
-.photoGridOne{
-  grid-template-columns: 1fr;
-}
-
-@media (max-width: 900px){
-  .photoGrid{
-    grid-template-columns:1fr;
-  }
-}
-/* ===== Work page media: make images fill the frames (wider look) ===== */
-#work-media .baLayer{
-  background-size: contain !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-
-/* Make the contain “letterbox” area look like a clean matte */
-#work-media .baFrame{
-  background: #fff !important;
-}
-
-#work-media .baLayer{
-  background-color: #fff !important;
-}
-
-
-#work-media .photoImg{
-  width:100%;
-  height:100%;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-
-/* ===== Windows work page: match photo height to slider (wider look) ===== */
-#work-media .photoFrame{
-  height: 320px !important;
-}
-/* ===== More vibrant brand background (blue/green) ===== */
-:root{
-  --mg-blue: #1f4e79;   /* deep clean blue */
-  --mg-green: #46b98a;  /* fresh green */
-  --mg-ice: #f6fbff;
-}
-
-/* Full page background */
-body{
-  background:
-    radial-gradient(1100px 650px at 10% 0%, rgba(31,78,121,.30), transparent 60%),
-    radial-gradient(1000px 620px at 92% 8%, rgba(70,185,138,.28), transparent 58%),
-    radial-gradient(900px 520px at 50% 95%, rgba(31,78,121,.18), transparent 62%),
-    linear-gradient(180deg, #ffffff 0%, var(--mg-ice) 100%);
-}
-
-/* “Clean shimmer” pattern across the page (subtle, but visible) */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:.55;
-  background:
-    radial-gradient(18px 18px at 12% 22%, rgba(255,255,255,.75), transparent 60%),
-    radial-gradient(14px 14px at 22% 68%, rgba(255,255,255,.55), transparent 60%),
-    radial-gradient(22px 22px at 78% 26%, rgba(255,255,255,.70), transparent 60%),
-    radial-gradient(16px 16px at 86% 70%, rgba(255,255,255,.52), transparent 60%),
-    radial-gradient(10px 10px at 55% 40%, rgba(255,255,255,.40), transparent 60%),
-    radial-gradient(12px 12px at 48% 78%, rgba(255,255,255,.42), transparent 60%);
-  filter: blur(.2px);
-}
-
-/* Make sure your actual page content stays above the background overlay */
-#root, main, .wrap, .section{
-  position:relative;
-  z-index:1;
-}
-/* LET THE BACKGROUND SHOW THROUGH THE WHITE SECTIONS */
-.section{
-  background: rgba(255,255,255,.72);
-  backdrop-filter: blur(8px);
-}
-/* ===== Strong, always-visible brand backdrop ===== */
-.page{
-  position:relative;
-  isolation:isolate;
-}
-
-.page::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(900px 600px at 0% 0%, rgba(31,78,121,.85), transparent 58%),
-    radial-gradient(900px 600px at 100% 0%, rgba(70,185,138,.80), transparent 58%),
-    radial-gradient(1200px 720px at 50% 110%, rgba(31,78,121,.45), transparent 65%),
-    linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(241,252,255,1) 100%);
-}
-
-
-/* Let the backdrop show through sections */
-.section,
-.section.alt{
-  background: rgba(255,255,255,.65) !important;
-  backdrop-filter: blur(10px);
-}
-
-
 `;
