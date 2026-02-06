@@ -1929,6 +1929,11 @@ body::before{
   position:relative;
   z-index:1;
 }
+/* LET THE BACKGROUND SHOW THROUGH THE WHITE SECTIONS */
+.section{
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(8px);
+}
 
 
 `;
