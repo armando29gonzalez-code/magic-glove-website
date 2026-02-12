@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 export async function POST(req) {
   try {
     const body = await req.json();
@@ -16,7 +14,7 @@ export async function POST(req) {
       });
     }
 
-    // Optional: simple honeypot anti-spam (frontend will send hp="")
+    // Honeypot anti-spam (frontend should send hp="")
     if (body.hp && String(body.hp).trim().length > 0) {
       return new Response(JSON.stringify({ ok: true }), {
         status: 200,
@@ -24,17 +22,16 @@ export async function POST(req) {
       });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return new Response(JSON.stringify({ ok: false, error: "Missing RESEND_API_KEY." }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     const toEmail = process.env.ESTIMATE_TO_EMAIL || "info@magicglovecleaning.com";
-
-    // IMPORTANT:
-    // - If your domain isn't verified in Resend yet, use "onboarding@resend.dev" as FROM.
-    // - Once verified, switch to something like "estimates@magicglovecleaning.com".
-    const fromEmail =
-      process.env.ESTIMATE_FROM_EMAIL || "onboarding@resend.dev";
-
-    const subject = `New Estimate Request — ${fullName} (${city})`;
+    const fromEmail = process.env.ESTIMATE_FROM_EMAIL || "onboarding@resend.dev";
 
     const preferredContact = body.preferredContact || "";
     const bestTime = body.bestTime || "";
@@ -43,6 +40,8 @@ export async function POST(req) {
     const referralSource = body.referralSource || "";
     const email = (body.email || "").trim();
     const comments = body.comments || "";
+
+    const subject = `New Estimate Request — ${fullName} (${city})`;
 
     const text = `
 New Estimate Request
@@ -62,17 +61,26 @@ Comments:
 ${comments || "(none)"}
 `.trim();
 
-    const { error } = await resend.emails.send({
+    const payload = {
       from: `Magic Glove Estimates <${fromEmail}>`,
       to: [toEmail],
       subject,
       text,
-      // If customer typed an email, make Reply-To their email so you can reply fast
-      replyTo: email ? email : undefined,
+      ...(email ? { reply_to: email } : {}),
+    };
+
+    const resp = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
 
-    if (error) {
-      console.error("Resend error:", error);
+    if (!resp.ok) {
+      const errText = await resp.text().catch(() => "");
+      console.error("Resend API error:", resp.status, errText);
       return new Response(JSON.stringify({ ok: false, error: "Email failed to send." }), {
         status: 500,
         headers: { "Content-Type": "application/json" },
