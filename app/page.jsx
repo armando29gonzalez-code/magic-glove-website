@@ -998,12 +998,25 @@ function EstimateBlock({ business }) {
     setForm((p) => ({ ...p, [name]: value }));
   }
 
-  function submit(e) {
-    e.preventDefault();
-    alert(
-      `Thanks! We received your request.\n\nName: ${form.fullName}\nPhone: ${form.phone}\nCity: ${form.city}\nService: ${form.service}\nPreferred: ${form.preferredContact} (${form.bestTime})\n\nWe’ll reach out shortly.`
-    );
+  async function submit(e) {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("/api/estimate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...form, hp: "" }),
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || "Failed to send.");
+
+    alert("✅ Request sent! We’ll reach out shortly.");
+  } catch (err) {
+    alert(`❌ ${err.message}`);
   }
+}
+
 
   return (
     <div className="gridForm">
