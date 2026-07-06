@@ -38,6 +38,9 @@ export async function POST(req) {
     const service = body.service || "";
     const propertyType = body.propertyType || "";
     const referralSource = body.referralSource || "";
+    const leadSource = body.leadSource || "Website Form";
+    const landingPage = body.landingPage || "Unknown page";
+    const pageTitle = body.pageTitle || "";
     const email = (body.email || "").trim();
     const comments = body.comments || "";
 
@@ -50,6 +53,10 @@ Name: ${fullName}
 Phone: ${phone}
 Email: ${email || "(not provided)"}
 City: ${city}
+
+Lead Source: ${leadSource}
+Landing Page: ${landingPage}
+Page Title: ${pageTitle || "(not provided)"}
 
 Service: ${service}
 Property Type: ${propertyType}
