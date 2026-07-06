@@ -38,9 +38,18 @@ export async function POST(req) {
     const service = body.service || "";
     const propertyType = body.propertyType || "";
     const referralSource = body.referralSource || "";
-    const leadSource = body.leadSource || "Website Form";
-    const landingPage = body.landingPage || "Unknown page";
-    const pageTitle = body.pageTitle || "";
+    const leadSource = body.leadSource || "Website Landing Page";
+    const referrer = req.headers.get("referer") || "";
+    let referrerPath = "";
+
+    try {
+      referrerPath = referrer ? new URL(referrer).pathname : "";
+    } catch {
+      referrerPath = referrer;
+    }
+
+    const landingPage = body.landingPage || referrerPath || "Unknown page";
+    const pageTitle = body.pageTitle || (referrerPath ? `Window Cleaning Lead — ${referrerPath}` : "");
     const email = (body.email || "").trim();
     const comments = body.comments || "";
 
