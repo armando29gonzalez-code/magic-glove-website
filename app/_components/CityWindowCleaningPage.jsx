@@ -4,7 +4,7 @@ export default function CityWindowCleaningPage({
   nearbyAreas,
   localAngle,
 }) {
-  const phoneHref = "tel:+818-942-4177";
+  const phoneHref = "tel:+8189424177";
   const emailHref = "mailto:info@magicglovecleaning.com";
 
   return (
