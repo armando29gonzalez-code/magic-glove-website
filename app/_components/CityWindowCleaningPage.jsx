@@ -7,11 +7,11 @@ function BeforeAfterPhotoBox({ c, title, beforeImage = "", afterImage = "" }) {
 
   const beforeStyle = beforeImage
     ? { backgroundImage: `url(${beforeImage})`, backgroundSize: "cover", backgroundPosition: "center" }
-    : { background: `linear-gradient(135deg, #dbe7ee, #8ca3b3)` };
+    : { background: "linear-gradient(135deg, #dbe7ee, #8ca3b3)" };
 
   const afterStyle = afterImage
     ? { backgroundImage: `url(${afterImage})`, backgroundSize: "cover", backgroundPosition: "center" }
-    : { background: `linear-gradient(135deg, ${c.mint}, ${c.sky})` };
+    : { background: `linear-gradient(135deg, ${c.mintSoft}, ${c.skySoft})` };
 
   return (
     <div style={{ marginTop: "18px" }}>
@@ -37,11 +37,11 @@ function BeforeAfterPhotoBox({ c, title, beforeImage = "", afterImage = "" }) {
           ) : null}
         </div>
 
-        <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 4, background: "rgba(7,23,40,.84)", color: c.white, borderRadius: "999px", padding: "6px 10px", fontSize: "12px", fontWeight: 1000 }}>Before</div>
+        <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 4, background: "rgba(7,23,40,.82)", color: c.white, borderRadius: "999px", padding: "6px 10px", fontSize: "12px", fontWeight: 1000 }}>Before</div>
         <div style={{ position: "absolute", top: "10px", right: "10px", zIndex: 4, background: "rgba(255,255,255,.9)", color: c.navy, borderRadius: "999px", padding: "6px 10px", fontSize: "12px", fontWeight: 1000 }}>After</div>
 
-        <div style={{ position: "absolute", left: `${position}%`, top: 0, bottom: 0, width: "3px", background: c.white, transform: "translateX(-50%)", zIndex: 5, boxShadow: "0 0 18px rgba(0,0,0,.35)" }} />
-        <div style={{ position: "absolute", left: `${position}%`, top: "50%", transform: "translate(-50%, -50%)", zIndex: 6, width: "44px", height: "44px", borderRadius: "50%", background: c.white, color: c.navy, display: "grid", placeItems: "center", fontWeight: 1000, boxShadow: "0 10px 30px rgba(0,0,0,.25)", border: `3px solid ${c.mint}` }}>↔</div>
+        <div style={{ position: "absolute", left: `${position}%`, top: 0, bottom: 0, width: "3px", background: c.white, transform: "translateX(-50%)", zIndex: 5, boxShadow: "0 0 18px rgba(0,0,0,.3)" }} />
+        <div style={{ position: "absolute", left: `${position}%`, top: "50%", transform: "translate(-50%, -50%)", zIndex: 6, width: "44px", height: "44px", borderRadius: "50%", background: c.white, color: c.navy, display: "grid", placeItems: "center", fontWeight: 1000, boxShadow: "0 10px 30px rgba(0,0,0,.22)", border: `3px solid ${c.mint}` }}>↔</div>
 
         <input
           type="range"
@@ -125,18 +125,21 @@ export default function CityWindowCleaningPage({
 
   const c = {
     navy: "#071728",
-    navy2: "#0f2b46",
+    navy2: "#12314a",
     ink: "#0f172a",
     slate: "#334155",
     muted: "#64748b",
     line: "#d7e3ea",
-    soft: "#f4fbfd",
+    soft: "#f6fbfc",
     white: "#ffffff",
-    mint: "#52f2c2",
-    mintDark: "#0f9f7a",
-    sky: "#39c6ff",
+    mint: "#7ddcca",
+    mintSoft: "#aee6dc",
+    mintDark: "#217b70",
+    sky: "#72c8e8",
+    skySoft: "#b7dff0",
     blue: "#2563eb",
-    lime: "#d9ff7a",
+    lime: "#d7ec91",
+    limeSoft: "#eef7c9",
     cream: "#fff7d6",
   };
 
@@ -154,22 +157,22 @@ export default function CityWindowCleaningPage({
     border: "1px solid transparent",
     cursor: "pointer",
     lineHeight: 1.1,
-    boxShadow: "0 10px 24px rgba(7,23,40,.14)",
+    boxShadow: "0 10px 24px rgba(7,23,40,.12)",
   };
 
   const card = {
     background: c.white,
     border: `1px solid ${c.line}`,
     borderRadius: "24px",
-    boxShadow: "0 18px 45px rgba(15, 43, 70, .08)",
+    boxShadow: "0 18px 45px rgba(15, 43, 70, .07)",
   };
 
   const pill = {
     display: "inline-flex",
     alignItems: "center",
     gap: "6px",
-    border: "1px solid rgba(255,255,255,.28)",
-    background: "rgba(255,255,255,.14)",
+    border: "1px solid rgba(255,255,255,.24)",
+    background: "rgba(255,255,255,.11)",
     color: c.white,
     padding: "8px 12px",
     borderRadius: "999px",
@@ -207,26 +210,26 @@ export default function CityWindowCleaningPage({
 
   const qualityCards = [
     {
-      title: "We are not trying to rush through your home.",
-      text: "We take time on the details customers actually notice: edges, corners, tracks, sills, screens, hard water, and cloudy glass.",
+      title: "We take our time on the tough spots.",
+      text: "Hard water, edges, tracks, screens, and corners are the parts people notice. We don’t just swipe the glass and leave.",
       color: c.mint,
-      sliderTitle: "Detail cleaning proof",
+      sliderTitle: "Hard water",
       beforeImage: "",
       afterImage: "",
     },
     {
-      title: "We are fair with pricing, not greedy.",
-      text: "We explain what is included, what is optional, and what is actually worth paying for instead of pushing random add-ons.",
+      title: "Straight quotes, no weird upsells.",
+      text: "We explain what is included, what is optional, and what is actually worth doing for your home or storefront.",
       color: c.sky,
-      sliderTitle: "Clear glass result",
+      sliderTitle: "Dirt and grime",
       beforeImage: "",
       afterImage: "",
     },
     {
-      title: "We care about the final look.",
-      text: "The goal is a cleaner, brighter home and a customer who feels good calling us again, not a one-time quick transaction.",
+      title: "We want it to look right when we leave.",
+      text: "We’re local, so our name matters. The goal is simple: clean work, fair pricing, and customers who call us again.",
       color: c.lime,
-      sliderTitle: "Finished transformation",
+      sliderTitle: "Solar cleaning",
       beforeImage: "",
       afterImage: "",
     },
@@ -252,7 +255,7 @@ export default function CityWindowCleaningPage({
 
   return (
     <main style={{ fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif", color: c.ink, background: `linear-gradient(180deg, ${c.soft} 0%, #ffffff 46%, #f7fbff 100%)` }}>
-      <div style={{ background: `linear-gradient(90deg, ${c.navy} 0%, ${c.navy2} 45%, ${c.mintDark} 100%)`, color: c.white }}>
+      <div style={{ background: `linear-gradient(90deg, ${c.navy} 0%, ${c.navy2} 58%, ${c.mintDark} 100%)`, color: c.white }}>
         <div style={{ ...wrap, paddingTop: "10px", paddingBottom: "10px", display: "flex", justifyContent: "space-between", gap: "12px", flexWrap: "wrap", alignItems: "center" }}>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             <span style={pill}>$75 off first full-service clean</span>
@@ -267,10 +270,10 @@ export default function CityWindowCleaningPage({
         </div>
       </div>
 
-      <nav style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(255,255,255,.9)", backdropFilter: "blur(12px)", borderBottom: `1px solid ${c.line}` }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)", borderBottom: `1px solid ${c.line}` }}>
         <div style={{ ...wrap, paddingTop: "12px", paddingBottom: "12px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px" }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <span style={{ width: "64px", height: "64px", borderRadius: "20px", background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, padding: "4px", display: "grid", placeItems: "center", boxShadow: "0 12px 28px rgba(57,198,255,.26)", flexShrink: 0 }}>
+            <span style={{ width: "64px", height: "64px", borderRadius: "20px", background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, padding: "4px", display: "grid", placeItems: "center", boxShadow: "0 12px 28px rgba(57,198,255,.18)", flexShrink: 0 }}>
               <span style={{ width: "100%", height: "100%", borderRadius: "17px", background: c.white, display: "grid", placeItems: "center", overflow: "hidden" }}>
                 <img src="/magic-glove-logo.jpg" alt="Magic Glove Window Cleaning" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               </span>
@@ -288,15 +291,15 @@ export default function CityWindowCleaningPage({
         </div>
       </nav>
 
-      <section style={{ background: `radial-gradient(circle at 15% 20%, rgba(82,242,194,.34), transparent 28%), radial-gradient(circle at 90% 15%, rgba(57,198,255,.34), transparent 28%), linear-gradient(135deg, ${c.navy} 0%, ${c.navy2} 58%, #0c4a5b 100%)`, color: c.white, overflow: "hidden" }}>
+      <section style={{ background: `radial-gradient(circle at 15% 20%, rgba(125,220,202,.22), transparent 28%), radial-gradient(circle at 90% 15%, rgba(114,200,232,.20), transparent 28%), linear-gradient(135deg, ${c.navy} 0%, ${c.navy2} 62%, #113f4d 100%)`, color: c.white, overflow: "hidden" }}>
         <div style={{ ...wrap, paddingTop: "64px", paddingBottom: "72px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "28px", alignItems: "center" }}>
             <div>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "18px", padding: "10px 12px", borderRadius: "22px", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.22)" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "18px", padding: "10px 12px", borderRadius: "22px", background: "rgba(255,255,255,.10)", border: "1px solid rgba(255,255,255,.20)" }}>
                 <img src="/magic-glove-logo.jpg" alt="Magic Glove Window Cleaning logo" style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "14px", background: c.white }} />
                 <div>
                   <div style={{ fontWeight: 1000 }}>Magic Glove Window Cleaning</div>
-                  <div style={{ fontSize: "12px", color: "#bdf7ea", fontWeight: 800 }}>Local, detail-focused service</div>
+                  <div style={{ fontSize: "12px", color: "#d0f2ec", fontWeight: 800 }}>Local, detail-focused service</div>
                 </div>
               </div>
 
@@ -306,36 +309,36 @@ export default function CityWindowCleaningPage({
               </div>
 
               <h1 style={{ margin: 0, fontSize: "clamp(44px, 7vw, 72px)", lineHeight: ".96", letterSpacing: "-.055em" }}>
-                Clean windows without the rushed, careless service.
+                Local window cleaning that doesn’t feel rushed.
               </h1>
 
-              <p style={{ marginTop: "20px", fontSize: "18px", lineHeight: 1.75, color: "#d8f6ff", maxWidth: "680px" }}>
-                Detailed residential window cleaning for homes in {areaDescription}. We clean glass, screens, tracks, sills, and can help with hard water spots and solar panel add-ons.
+              <p style={{ marginTop: "20px", fontSize: "18px", lineHeight: 1.75, color: "#dbeff4", maxWidth: "680px" }}>
+                We help homes around {areaDescription} look cleaner and brighter with detailed glass, screens, tracks, sills, hard water help, and solar panel add-ons.
               </p>
 
-              <div style={{ marginTop: "22px", padding: "16px 18px", borderRadius: "22px", background: "rgba(82,242,194,.13)", border: "1px solid rgba(82,242,194,.36)", maxWidth: "620px" }}>
+              <div style={{ marginTop: "22px", padding: "16px 18px", borderRadius: "22px", background: "rgba(125,220,202,.12)", border: "1px solid rgba(125,220,202,.28)", maxWidth: "620px" }}>
                 <div style={{ fontSize: "22px", fontWeight: 1000, color: c.white }}>Get $75 off your first full-service window cleaning.</div>
-                <div style={{ marginTop: "6px", color: "#bdf7ea", fontWeight: 800 }}>Fair pricing. Quality work. No greedy upsells.</div>
+                <div style={{ marginTop: "6px", color: "#d0f2ec", fontWeight: 800 }}>Fair pricing. Careful work. No pushy upsells.</div>
               </div>
 
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "24px" }}>
                 <a href="#quote" style={{ ...btn, background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, color: c.navy }}>Get Free Quote</a>
-                <a href={phoneHref} style={{ ...btn, background: "rgba(255,255,255,.10)", color: c.white, borderColor: "rgba(255,255,255,.32)" }}>Call Now</a>
+                <a href={phoneHref} style={{ ...btn, background: "rgba(255,255,255,.10)", color: c.white, borderColor: "rgba(255,255,255,.28)" }}>Call Now</a>
                 <a href="/" style={{ ...btn, background: c.white, color: c.navy }}>Check out our website</a>
               </div>
             </div>
 
-            <div style={{ ...card, padding: "16px", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.24)", boxShadow: "0 30px 80px rgba(0,0,0,.25)", backdropFilter: "blur(10px)" }}>
-              <div style={{ minHeight: "360px", borderRadius: "22px", background: `linear-gradient(145deg, rgba(82,242,194,.35), rgba(57,198,255,.22)), linear-gradient(135deg, #ffffff, #dff7ff)`, position: "relative", overflow: "hidden" }}>
-                <div style={{ position: "absolute", inset: "26px", borderRadius: "28px", border: "2px dashed rgba(7,23,40,.2)" }} />
-                <div style={{ position: "absolute", top: "26px", left: "26px", right: "26px", background: c.white, color: c.navy, borderRadius: "20px", padding: "16px", boxShadow: "0 18px 40px rgba(7,23,40,.12)" }}>
+            <div style={{ ...card, padding: "16px", background: "rgba(255,255,255,.10)", border: "1px solid rgba(255,255,255,.20)", boxShadow: "0 30px 80px rgba(0,0,0,.22)", backdropFilter: "blur(10px)" }}>
+              <div style={{ minHeight: "360px", borderRadius: "22px", background: `linear-gradient(145deg, rgba(125,220,202,.24), rgba(114,200,232,.16)), linear-gradient(135deg, #ffffff, #eef8fb)`, position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: "26px", borderRadius: "28px", border: "2px dashed rgba(7,23,40,.18)" }} />
+                <div style={{ position: "absolute", top: "26px", left: "26px", right: "26px", background: c.white, color: c.navy, borderRadius: "20px", padding: "16px", boxShadow: "0 18px 40px rgba(7,23,40,.10)" }}>
                   <div style={{ fontSize: "13px", fontWeight: 1000, color: c.mintDark, textTransform: "uppercase", letterSpacing: ".08em" }}>Photos coming next</div>
-                  <div style={{ marginTop: "6px", fontSize: "24px", fontWeight: 1000, letterSpacing: "-.03em" }}>Before / After section</div>
-                  <div style={{ marginTop: "8px", color: c.muted, lineHeight: 1.6, fontSize: "14px" }}>We will add real job photos here once the layout and colors feel right.</div>
+                  <div style={{ marginTop: "6px", fontSize: "24px", fontWeight: 1000, letterSpacing: "-.03em" }}>Before / after section</div>
+                  <div style={{ marginTop: "8px", color: c.muted, lineHeight: 1.6, fontSize: "14px" }}>We’ll add real job photos here after the layout is set.</div>
                 </div>
                 <div style={{ position: "absolute", bottom: "26px", left: "26px", right: "26px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                  <div style={{ borderRadius: "18px", padding: "18px", background: "rgba(7,23,40,.82)", color: c.white, fontWeight: 900 }}>Before</div>
-                  <div style={{ borderRadius: "18px", padding: "18px", background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, color: c.navy, fontWeight: 1000 }}>After</div>
+                  <div style={{ borderRadius: "18px", padding: "18px", background: "rgba(7,23,40,.80)", color: c.white, fontWeight: 900 }}>Before</div>
+                  <div style={{ borderRadius: "18px", padding: "18px", background: `linear-gradient(135deg, ${c.mintSoft}, ${c.skySoft})`, color: c.navy, fontWeight: 1000 }}>After</div>
                 </div>
               </div>
             </div>
@@ -346,7 +349,7 @@ export default function CityWindowCleaningPage({
       <section style={{ background: c.white, borderBottom: `1px solid ${c.line}` }}>
         <div style={{ ...wrap, paddingTop: "18px", paddingBottom: "18px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "10px" }}>
           {["Free Quotes", "Screens, Tracks & Sills", "Interior & Exterior", "Hard Water Add-Ons", "Solar Panel Add-Ons"].map((item, index) => (
-            <div key={item} style={{ borderRadius: "18px", padding: "14px", textAlign: "center", fontWeight: 1000, color: c.navy, background: index % 2 === 0 ? "#e9fff7" : "#e8f7ff", border: `1px solid ${c.line}` }}>{item}</div>
+            <div key={item} style={{ borderRadius: "18px", padding: "14px", textAlign: "center", fontWeight: 1000, color: c.navy, background: index % 2 === 0 ? "#f0fbf8" : "#eff8fc", border: `1px solid ${c.line}` }}>{item}</div>
           ))}
         </div>
       </section>
@@ -354,9 +357,9 @@ export default function CityWindowCleaningPage({
       <section style={{ ...wrap, paddingTop: "64px", paddingBottom: "64px" }}>
         <div style={{ maxWidth: "780px" }}>
           <span style={darkPill}>How Magic Glove is different</span>
-          <h2 style={{ margin: "14px 0 0", fontSize: "clamp(34px, 5vw, 52px)", lineHeight: 1, letterSpacing: "-.045em" }}>We care about quality, not squeezing customers.</h2>
+          <h2 style={{ margin: "14px 0 0", fontSize: "clamp(34px, 5vw, 52px)", lineHeight: 1, letterSpacing: "-.045em" }}>Local service, careful work, fair prices.</h2>
           <p style={{ marginTop: "14px", color: c.muted, fontSize: "16px", lineHeight: 1.75 }}>
-            We want Magic Glove to feel different from companies that rush, overcharge, or treat every home like a quick transaction. We want clean windows, fair prices, and customers who actually feel taken care of.
+            We’re trying to build a real local name, not just get in and out. The job should look good, the price should make sense, and you should feel comfortable calling us again.
           </p>
         </div>
 
@@ -372,7 +375,7 @@ export default function CityWindowCleaningPage({
         </div>
       </section>
 
-      <section style={{ background: `linear-gradient(135deg, #e9fff7, #e8f7ff)`, borderTop: `1px solid ${c.line}`, borderBottom: `1px solid ${c.line}`, padding: "64px 0" }}>
+      <section style={{ background: `linear-gradient(135deg, #f0fbf8, #eff8fc)`, borderTop: `1px solid ${c.line}`, borderBottom: `1px solid ${c.line}`, padding: "64px 0" }}>
         <div style={{ ...wrap, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "22px", alignItems: "start" }}>
           <div>
             <span style={darkPill}>Detailed service</span>
@@ -385,8 +388,8 @@ export default function CityWindowCleaningPage({
           <div style={{ ...card, padding: "22px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "10px" }}>
               {included.map((item, index) => (
-                <div key={item} style={{ display: "flex", gap: "10px", alignItems: "center", padding: "11px", borderRadius: "16px", background: index % 2 === 0 ? "#f0fff9" : "#eff9ff", border: `1px solid ${c.line}`, color: c.slate, fontSize: "14px", fontWeight: 900 }}>
-                  <span style={{ width: "24px", height: "24px", borderRadius: "10px", background: index % 2 === 0 ? c.mint : c.sky, color: c.navy, display: "grid", placeItems: "center", fontSize: "12px", fontWeight: 1000 }}>✓</span>
+                <div key={item} style={{ display: "flex", gap: "10px", alignItems: "center", padding: "11px", borderRadius: "16px", background: index % 2 === 0 ? "#f4fbf8" : "#f3f9fc", border: `1px solid ${c.line}`, color: c.slate, fontSize: "14px", fontWeight: 900 }}>
+                  <span style={{ width: "24px", height: "24px", borderRadius: "10px", background: index % 2 === 0 ? c.mintSoft : c.skySoft, color: c.navy, display: "grid", placeItems: "center", fontSize: "12px", fontWeight: 1000 }}>✓</span>
                   <span>{item}</span>
                 </div>
               ))}
@@ -401,7 +404,7 @@ export default function CityWindowCleaningPage({
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "14px", marginTop: "22px" }}>
           {process.map(([num, title, text]) => (
             <div key={title} style={{ ...card, padding: "20px" }}>
-              <div style={{ width: "42px", height: "42px", borderRadius: "50%", background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, color: c.navy, display: "grid", placeItems: "center", fontWeight: 1000, marginBottom: "14px" }}>{num}</div>
+              <div style={{ width: "42px", height: "42px", borderRadius: "50%", background: `linear-gradient(135deg, ${c.mintSoft}, ${c.skySoft})`, color: c.navy, display: "grid", placeItems: "center", fontWeight: 1000, marginBottom: "14px" }}>{num}</div>
               <h3 style={{ margin: 0, fontSize: "19px" }}>{title}</h3>
               <p style={{ marginTop: "8px", color: c.muted, lineHeight: 1.65, fontSize: "14px" }}>{text}</p>
             </div>
@@ -410,10 +413,10 @@ export default function CityWindowCleaningPage({
       </section>
 
       <section style={{ ...wrap, paddingBottom: "64px" }}>
-        <div style={{ borderRadius: "30px", padding: "26px", background: `linear-gradient(135deg, ${c.navy}, ${c.navy2})`, color: c.white, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px", alignItems: "center", boxShadow: "0 24px 70px rgba(7,23,40,.18)" }}>
+        <div style={{ borderRadius: "30px", padding: "26px", background: `linear-gradient(135deg, ${c.navy}, ${c.navy2})`, color: c.white, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px", alignItems: "center", boxShadow: "0 24px 70px rgba(7,23,40,.16)" }}>
           <div>
             <h2 style={{ margin: 0, fontSize: "clamp(28px, 4vw, 42px)", letterSpacing: "-.04em" }}>Serving {city} and nearby areas</h2>
-            <p style={{ marginTop: "10px", color: "#d8f6ff", lineHeight: 1.7 }}>Magic Glove Window Cleaning serves {city} and nearby areas including {nearbyAreas}.</p>
+            <p style={{ marginTop: "10px", color: "#dbeff4", lineHeight: 1.7 }}>Magic Glove Window Cleaning serves {city} and nearby areas including {nearbyAreas}.</p>
           </div>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <a href="#quote" style={{ ...btn, background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, color: c.navy }}>Get Free Quote</a>
@@ -422,16 +425,16 @@ export default function CityWindowCleaningPage({
         </div>
       </section>
 
-      <section id="quote" style={{ background: `radial-gradient(circle at 8% 10%, rgba(82,242,194,.24), transparent 30%), radial-gradient(circle at 95% 5%, rgba(57,198,255,.24), transparent 28%), ${c.navy}`, color: c.white, padding: "72px 0" }}>
+      <section id="quote" style={{ background: `radial-gradient(circle at 8% 10%, rgba(125,220,202,.18), transparent 30%), radial-gradient(circle at 95% 5%, rgba(114,200,232,.16), transparent 28%), ${c.navy}`, color: c.white, padding: "72px 0" }}>
         <div style={wrap}>
           <div style={{ textAlign: "center", maxWidth: "850px", margin: "0 auto 26px" }}>
             <span style={pill}>Free quote</span>
             <h2 style={{ margin: "14px 0 0", fontSize: "clamp(34px, 5vw, 52px)", lineHeight: 1, letterSpacing: "-.045em" }}>Get your window cleaning quote</h2>
-            <p style={{ marginTop: "12px", fontSize: "16px", color: "#d8f6ff", lineHeight: 1.7 }}>Fill this out and we’ll reach out shortly. For fastest pricing, mention photos in the comments.</p>
+            <p style={{ marginTop: "12px", fontSize: "16px", color: "#dbeff4", lineHeight: 1.7 }}>Fill this out and we’ll reach out shortly. For fastest pricing, mention photos in the comments.</p>
           </div>
 
           <div style={{ display: "grid", gap: "18px", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", alignItems: "start" }}>
-            <form onSubmit={submit} style={{ background: c.white, color: c.ink, borderRadius: "28px", padding: "24px", boxShadow: "0 25px 80px rgba(0,0,0,.25)", borderTop: `8px solid ${c.mint}` }}>
+            <form onSubmit={submit} style={{ background: c.white, color: c.ink, borderRadius: "28px", padding: "24px", boxShadow: "0 25px 80px rgba(0,0,0,.23)", borderTop: `8px solid ${c.mint}` }}>
               <div style={{ display: "grid", gap: "12px", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
                 <div><label style={label}>Full Name</label><input style={input} name="fullName" value={form.fullName} onChange={onChange} required placeholder="Your name" /></div>
                 <div><label style={label}>Phone</label><input style={input} name="phone" value={form.phone} onChange={onChange} required placeholder="(818) 555-1234" /></div>
@@ -454,9 +457,9 @@ export default function CityWindowCleaningPage({
             </form>
 
             <div style={{ display: "grid", gap: "14px" }}>
-              <div style={{ background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.22)", color: c.white, borderRadius: "28px", padding: "24px", backdropFilter: "blur(10px)" }}>
+              <div style={{ background: "rgba(255,255,255,.10)", border: "1px solid rgba(255,255,255,.20)", color: c.white, borderRadius: "28px", padding: "24px", backdropFilter: "blur(10px)" }}>
                 <h3 style={{ marginTop: 0, fontSize: "24px" }}>Contact Magic Glove</h3>
-                <p style={{ color: "#d8f6ff", lineHeight: 1.7 }}>Phone: <a href={phoneHref}>{phoneDisplay}</a><br />Email: <a href={emailHref}>{email}</a></p>
+                <p style={{ color: "#dbeff4", lineHeight: 1.7 }}>Phone: <a href={phoneHref}>{phoneDisplay}</a><br />Email: <a href={emailHref}>{email}</a></p>
                 <div style={{ display: "grid", gap: "10px" }}>
                   <a style={{ ...btn, background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, color: c.navy }} href={phoneHref}>Call</a>
                   <a style={{ ...btn, background: c.white, color: c.navy }} href="sms:+18189424177">Text</a>
@@ -465,7 +468,7 @@ export default function CityWindowCleaningPage({
 
               <div style={{ background: c.cream, color: c.navy, borderRadius: "28px", padding: "24px", border: "1px solid rgba(255,255,255,.3)" }}>
                 <h3 style={{ marginTop: 0, fontSize: "24px" }}>Our promise</h3>
-                <p style={{ color: c.slate, lineHeight: 1.7 }}>We are here to build a real local business, not squeeze customers. We want the work to look good, the pricing to make sense, and the experience to feel easy.</p>
+                <p style={{ color: c.slate, lineHeight: 1.7 }}>We’re here to build a real local business, not squeeze customers. We want the work to look good, the pricing to make sense, and the experience to feel easy.</p>
                 <a style={{ ...btn, background: c.navy, color: c.white }} href="/">Check out our website</a>
               </div>
             </div>
