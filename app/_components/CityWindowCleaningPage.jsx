@@ -2,6 +2,61 @@
 
 import { useState } from "react";
 
+function BeforeAfterPhotoBox({ c, title, beforeImage = "", afterImage = "" }) {
+  const [position, setPosition] = useState(52);
+
+  const beforeStyle = beforeImage
+    ? { backgroundImage: `url(${beforeImage})`, backgroundSize: "cover", backgroundPosition: "center" }
+    : { background: `linear-gradient(135deg, #dbe7ee, #8ca3b3)` };
+
+  const afterStyle = afterImage
+    ? { backgroundImage: `url(${afterImage})`, backgroundSize: "cover", backgroundPosition: "center" }
+    : { background: `linear-gradient(135deg, ${c.mint}, ${c.sky})` };
+
+  return (
+    <div style={{ marginTop: "18px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "center", marginBottom: "8px" }}>
+        <div style={{ fontSize: "12px", fontWeight: 1000, color: c.navy, textTransform: "uppercase", letterSpacing: ".08em" }}>{title}</div>
+        <div style={{ fontSize: "12px", color: c.muted, fontWeight: 800 }}>Drag slider</div>
+      </div>
+
+      <div style={{ position: "relative", height: "210px", borderRadius: "22px", overflow: "hidden", border: `1px solid ${c.line}`, boxShadow: "inset 0 0 0 1px rgba(255,255,255,.35)" }}>
+        <div style={{ position: "absolute", inset: 0, ...afterStyle }}>
+          {!afterImage ? (
+            <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: c.navy, fontWeight: 1000, textAlign: "center", padding: "18px" }}>
+              After photo here
+            </div>
+          ) : null}
+        </div>
+
+        <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - position}% 0 0)`, ...beforeStyle }}>
+          {!beforeImage ? (
+            <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: c.white, fontWeight: 1000, textAlign: "center", padding: "18px", background: "rgba(7,23,40,.25)" }}>
+              Before photo here
+            </div>
+          ) : null}
+        </div>
+
+        <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 4, background: "rgba(7,23,40,.84)", color: c.white, borderRadius: "999px", padding: "6px 10px", fontSize: "12px", fontWeight: 1000 }}>Before</div>
+        <div style={{ position: "absolute", top: "10px", right: "10px", zIndex: 4, background: "rgba(255,255,255,.9)", color: c.navy, borderRadius: "999px", padding: "6px 10px", fontSize: "12px", fontWeight: 1000 }}>After</div>
+
+        <div style={{ position: "absolute", left: `${position}%`, top: 0, bottom: 0, width: "3px", background: c.white, transform: "translateX(-50%)", zIndex: 5, boxShadow: "0 0 18px rgba(0,0,0,.35)" }} />
+        <div style={{ position: "absolute", left: `${position}%`, top: "50%", transform: "translate(-50%, -50%)", zIndex: 6, width: "44px", height: "44px", borderRadius: "50%", background: c.white, color: c.navy, display: "grid", placeItems: "center", fontWeight: 1000, boxShadow: "0 10px 30px rgba(0,0,0,.25)", border: `3px solid ${c.mint}` }}>↔</div>
+
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={position}
+          onChange={(e) => setPosition(Number(e.target.value))}
+          aria-label={`Before and after slider for ${title}`}
+          style={{ position: "absolute", inset: 0, zIndex: 10, opacity: 0, cursor: "ew-resize", width: "100%", height: "100%" }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function CityWindowCleaningPage({
   city,
   areaDescription,
@@ -155,16 +210,25 @@ export default function CityWindowCleaningPage({
       title: "We are not trying to rush through your home.",
       text: "We take time on the details customers actually notice: edges, corners, tracks, sills, screens, hard water, and cloudy glass.",
       color: c.mint,
+      sliderTitle: "Detail cleaning proof",
+      beforeImage: "",
+      afterImage: "",
     },
     {
       title: "We are fair with pricing, not greedy.",
       text: "We explain what is included, what is optional, and what is actually worth paying for instead of pushing random add-ons.",
       color: c.sky,
+      sliderTitle: "Clear glass result",
+      beforeImage: "",
+      afterImage: "",
     },
     {
       title: "We care about the final look.",
       text: "The goal is a cleaner, brighter home and a customer who feels good calling us again, not a one-time quick transaction.",
       color: c.lime,
+      sliderTitle: "Finished transformation",
+      beforeImage: "",
+      afterImage: "",
     },
   ];
 
@@ -203,17 +267,17 @@ export default function CityWindowCleaningPage({
         </div>
       </div>
 
-      <nav style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(255,255,255,.86)", backdropFilter: "blur(12px)", borderBottom: `1px solid ${c.line}` }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(255,255,255,.9)", backdropFilter: "blur(12px)", borderBottom: `1px solid ${c.line}` }}>
         <div style={{ ...wrap, paddingTop: "12px", paddingBottom: "12px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px" }}>
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <span style={{ width: "44px", height: "44px", borderRadius: "16px", background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, padding: "3px", display: "grid", placeItems: "center", boxShadow: "0 12px 28px rgba(57,198,255,.26)" }}>
-              <span style={{ width: "100%", height: "100%", borderRadius: "14px", background: c.white, display: "grid", placeItems: "center", overflow: "hidden" }}>
+          <a href="/" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <span style={{ width: "64px", height: "64px", borderRadius: "20px", background: `linear-gradient(135deg, ${c.mint}, ${c.sky})`, padding: "4px", display: "grid", placeItems: "center", boxShadow: "0 12px 28px rgba(57,198,255,.26)", flexShrink: 0 }}>
+              <span style={{ width: "100%", height: "100%", borderRadius: "17px", background: c.white, display: "grid", placeItems: "center", overflow: "hidden" }}>
                 <img src="/magic-glove-logo.jpg" alt="Magic Glove Window Cleaning" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               </span>
             </span>
             <span>
-              <span style={{ display: "block", fontWeight: 1000, letterSpacing: "-.02em" }}>Magic Glove</span>
-              <span style={{ display: "block", fontSize: "12px", color: c.muted, fontWeight: 800 }}>Window Cleaning</span>
+              <span style={{ display: "block", fontWeight: 1000, letterSpacing: "-.02em", fontSize: "18px" }}>Magic Glove</span>
+              <span style={{ display: "block", fontSize: "13px", color: c.muted, fontWeight: 900 }}>Window Cleaning</span>
             </span>
           </a>
 
@@ -228,6 +292,14 @@ export default function CityWindowCleaningPage({
         <div style={{ ...wrap, paddingTop: "64px", paddingBottom: "72px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "28px", alignItems: "center" }}>
             <div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "18px", padding: "10px 12px", borderRadius: "22px", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.22)" }}>
+                <img src="/magic-glove-logo.jpg" alt="Magic Glove Window Cleaning logo" style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "14px", background: c.white }} />
+                <div>
+                  <div style={{ fontWeight: 1000 }}>Magic Glove Window Cleaning</div>
+                  <div style={{ fontSize: "12px", color: "#bdf7ea", fontWeight: 800 }}>Local, detail-focused service</div>
+                </div>
+              </div>
+
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "18px" }}>
                 <span style={pill}>Window Cleaning in {city}</span>
                 <span style={pill}>Residential • Commercial • Solar</span>
@@ -288,12 +360,13 @@ export default function CityWindowCleaningPage({
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "14px", marginTop: "22px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "18px", marginTop: "22px" }}>
           {qualityCards.map((item) => (
             <div key={item.title} style={{ ...card, padding: "22px", borderTop: `8px solid ${item.color}` }}>
               <div style={{ width: "42px", height: "42px", borderRadius: "16px", background: item.color, color: c.navy, display: "grid", placeItems: "center", fontWeight: 1000, marginBottom: "16px" }}>✓</div>
               <h3 style={{ margin: 0, fontSize: "21px", lineHeight: 1.2, letterSpacing: "-.02em" }}>{item.title}</h3>
               <p style={{ color: c.muted, lineHeight: 1.7, marginTop: "10px", fontSize: "14px" }}>{item.text}</p>
+              <BeforeAfterPhotoBox c={c} title={item.sliderTitle} beforeImage={item.beforeImage} afterImage={item.afterImage} />
             </div>
           ))}
         </div>
