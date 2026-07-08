@@ -1,27 +1,25 @@
 export default function sitemap() {
-  const baseUrl = "https://magicglovecleaning.com";
-
   return [
     {
-      url: baseUrl,
+      url: "https://www.magicglovecleaning.com",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/window-cleaning-los-angeles`,
+      url: "https://www.magicglovecleaning.com/window-cleaning-los-angeles",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
-      url: `${baseUrl}/window-cleaning-valencia`,
+      url: "https://www.magicglovecleaning.com/window-cleaning-valencia",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/window-cleaning-thousand-oaks`,
+      url: "https://www.magicglovecleaning.com/window-cleaning-thousand-oaks",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
