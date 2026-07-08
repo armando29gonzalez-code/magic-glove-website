@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "Get professional window cleaning in Valencia and Santa Clarita from Magic Glove. Residential glass, screens, tracks, sills, hard water help, and solar panel cleaning add-ons.",
   alternates: {
-    canonical: "https://magicglovecleaning.com/window-cleaning-valencia",
+    canonical: "https://www.magicglovecleaning.com/window-cleaning-valencia",
   },
   openGraph: {
     title: "Window Cleaning in Valencia, CA | Magic Glove",
     description:
       "Local Valencia window cleaning for homes and storefronts, including screens, tracks, sills, hard water help, and solar panel cleaning add-ons.",
-    url: "https://magicglovecleaning.com/window-cleaning-valencia",
+    url: "https://www.magicglovecleaning.com/window-cleaning-valencia",
     siteName: "Magic Glove Window Cleaning",
     type: "website",
   },
