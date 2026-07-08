@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "Get professional window cleaning in Thousand Oaks and Conejo Valley from Magic Glove. Residential glass, patio doors, screens, tracks, hard water help, and solar panel cleaning add-ons.",
   alternates: {
-    canonical: "https://magicglovecleaning.com/window-cleaning-thousand-oaks",
+    canonical: "https://www.magicglovecleaning.com/window-cleaning-thousand-oaks",
   },
   openGraph: {
     title: "Window Cleaning in Thousand Oaks | Magic Glove",
     description:
       "Local Thousand Oaks window cleaning for homes, large glass, patio doors, screens, tracks, hard water help, and solar panel cleaning add-ons.",
-    url: "https://magicglovecleaning.com/window-cleaning-thousand-oaks",
+    url: "https://www.magicglovecleaning.com/window-cleaning-thousand-oaks",
     siteName: "Magic Glove Window Cleaning",
     type: "website",
   },
