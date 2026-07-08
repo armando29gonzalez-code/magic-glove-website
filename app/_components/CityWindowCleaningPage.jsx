@@ -243,7 +243,7 @@ export default function CityWindowCleaningPage({ city, areaDescription, nearbyAr
         </div>
       </section>
 
-      <style jsx>{`
+      <style jsx global>{`
         .landingPage { --navy: ${colors.navy}; --line: ${colors.line}; --mint: ${colors.mint}; --sky: ${colors.sky}; --muted: ${colors.muted}; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: ${colors.ink}; background: linear-gradient(180deg, ${colors.soft} 0%, #fff 46%, #f7fbff 100%); }
         .wrap { max-width: 1120px; margin: 0 auto; padding: 0 18px; }
         a { color: inherit; }
