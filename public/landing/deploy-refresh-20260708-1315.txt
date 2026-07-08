@@ -1,0 +1,3 @@
+Manual deploy refresh for Magic Glove landing pages.
+Timestamp: 2026-07-08 13:15 PT
+Purpose: trigger a fresh Vercel deployment.
