@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 const GOOGLE_ADS_ID = "AW-18166038580";
-const GOOGLE_ADS_CONVERSION_LABEL = "gc_fCNDK1c0cELSAn9ZD";
+const GOOGLE_ADS_CONTACT_CONVERSION_LABEL = "tPhZCKrT4NMcELSAn9ZD";
 
 export default function RootLayout({ children }) {
   return (
@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        {/* Fire the Google Ads lead conversion only after the estimate form API succeeds. */}
+        {/* Fire the Google Ads Contact conversion only after the estimate form API succeeds. */}
         <Script id="google-ads-estimate-conversion" strategy="afterInteractive">
           {`
             (function () {
@@ -63,7 +63,9 @@ export default function RootLayout({ children }) {
                     response.clone().json().then(function (data) {
                       if (data && data.ok && typeof window.gtag === 'function') {
                         window.gtag('event', 'conversion', {
-                          send_to: '${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}'
+                          send_to: '${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONTACT_CONVERSION_LABEL}',
+                          value: 1.0,
+                          currency: 'USD'
                         });
                       }
                     }).catch(function () {});
