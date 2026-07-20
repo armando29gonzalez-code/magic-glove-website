@@ -40,10 +40,35 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        {/* Fire the Google Ads Contact conversion only after the estimate form API succeeds. */}
-        <Script id="google-ads-estimate-conversion" strategy="afterInteractive">
+        {/*
+          Google Ads Contact conversion.
+          Google generated this as a click snippet, but the site calls it only after
+          /api/estimate succeeds so fake/failed button clicks are not counted.
+        */}
+        <Script id="google-ads-contact-conversion" strategy="afterInteractive">
           {`
             (function () {
+              const sendTo = '${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONTACT_CONVERSION_LABEL}';
+
+              window.gtag_report_conversion = function (url) {
+                const callback = function () {
+                  if (typeof url !== 'undefined') {
+                    window.location = url;
+                  }
+                };
+
+                if (typeof window.gtag === 'function') {
+                  window.gtag('event', 'conversion', {
+                    send_to: sendTo,
+                    value: 1.0,
+                    currency: 'USD',
+                    event_callback: callback
+                  });
+                }
+
+                return false;
+              };
+
               if (window.__magicGloveGoogleAdsPatch) return;
               window.__magicGloveGoogleAdsPatch = true;
 
@@ -61,12 +86,8 @@ export default function RootLayout({ children }) {
 
                   if (url && String(url).includes('/api/estimate') && method === 'POST' && response.ok) {
                     response.clone().json().then(function (data) {
-                      if (data && data.ok && typeof window.gtag === 'function') {
-                        window.gtag('event', 'conversion', {
-                          send_to: '${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONTACT_CONVERSION_LABEL}',
-                          value: 1.0,
-                          currency: 'USD'
-                        });
+                      if (data && data.ok && typeof window.gtag_report_conversion === 'function') {
+                        window.gtag_report_conversion();
                       }
                     }).catch(function () {});
                   }
