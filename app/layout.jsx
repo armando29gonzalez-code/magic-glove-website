@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 const GOOGLE_ADS_ID = "AW-18166038580";
-const GOOGLE_ADS_CONTACT_CONVERSION_LABEL = "tPhZCKrT4NMcELSAn9ZD";
+const GOOGLE_ADS_FORM_SUBMISSION_LABEL = "vWInCJ73j9QcELSAn9ZD";
 
 export default function RootLayout({ children }) {
   return (
@@ -41,14 +41,14 @@ export default function RootLayout({ children }) {
         </Script>
 
         {/*
-          Google Ads Contact conversion.
+          Google Ads Free Estimate Form Submission conversion.
           Google generated this as a click snippet, but the site calls it only after
           /api/estimate succeeds so fake/failed button clicks are not counted.
         */}
-        <Script id="google-ads-contact-conversion" strategy="afterInteractive">
+        <Script id="google-ads-form-submission-conversion" strategy="afterInteractive">
           {`
             (function () {
-              const sendTo = '${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONTACT_CONVERSION_LABEL}';
+              const sendTo = '${GOOGLE_ADS_ID}/${GOOGLE_ADS_FORM_SUBMISSION_LABEL}';
 
               window.gtag_report_conversion = function (url) {
                 const callback = function () {
@@ -60,8 +60,6 @@ export default function RootLayout({ children }) {
                 if (typeof window.gtag === 'function') {
                   window.gtag('event', 'conversion', {
                     send_to: sendTo,
-                    value: 1.0,
-                    currency: 'USD',
                     event_callback: callback
                   });
                 }
